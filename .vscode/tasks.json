@@ -1,0 +1,96 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Swarm: Start Coordinator",
+      "type": "shell",
+      "command": "copilot",
+      "args": ["--model", "claude-haiku-4.5", "@swarm-coordinator"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Swarm: Start TDD Coordinator",
+      "type": "shell",
+      "command": "copilot",
+      "args": ["--model", "claude-haiku-4.5", "@tdd-coordinator"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Swarm: Start Property Test Generator",
+      "type": "shell",
+      "command": "copilot",
+      "args": ["--model", "claude-haiku-4.5", "@property-test-generator"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Swarm: Start Quality Guardian",
+      "type": "shell",
+      "command": "copilot",
+      "args": ["--model", "claude-haiku-4.5", "@crap-analyzer"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Swarm: Start Git Orchestrator",
+      "type": "shell",
+      "command": "copilot",
+      "args": ["--model", "claude-haiku-4.5", "@git-orchestrator"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Swarm: Run All Quality Gates",
+      "type": "shell",
+      "command": "./gradlew",
+      "args": ["test", "jacocoTestReport", "pitest"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true
+      }
+    },
+    {
+      "label": "Swarm: Start Coordinator (Sonnet - teuer)",
+      "type": "shell",
+      "command": "copilot",
+      "args": ["--model", "claude-sonnet-4", "@swarm-coordinator"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+      }
+    }
+  ]
+}
