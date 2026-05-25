@@ -1,0 +1,11 @@
+﻿[
+  {
+    "name": "kotlin",
+    "description": "Kotlin/Spring Boot Clean Architecture and DDD workflow",
+    "default": true
+  },
+  {
+    "name": "python",
+    "description": "Python TDD workflow with pytest, Hypothesis, and clean architecture conventions"
+  }
+]

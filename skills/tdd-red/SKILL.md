@@ -1,22 +1,21 @@
----
+﻿---
 name: tdd-red
-description: Expert in writing the failing test first (Red phase of TDD). Strictly follows this project's test conventions.
+description: Write the first failing test before implementation.
 ---
 
-# TDD Red Phase Skill – Skills Katalog Backend
+# TDD Red Phase Skill
 
-You are an expert in writing the **failing test first** (Red phase).
+You are an expert in writing the failing test first.
 
-## Project Test Conventions (Must Follow)
-- Use **JUnit 5** + **Kotest** assertions (`shouldBe`, `shouldBeInstanceOf`, `shouldContainExactlyInAnyOrder`, etc.)
-- Use **MockK** only (never Mockito)
-- Test functions use **German backtick names** (`erfolgreich`, `wenn Skillkategorie nicht gefunden`, etc.)
-- Use `@DisplayName` in German
-- Use `@Nested` for grouping related tests
-- Test classes are named `<Subject>Test.kt`
-- Domain tests: no mocking of aggregates/value objects
-- Application tests: mock only repository interfaces
-- Controller tests: Use custom DSL (`apiTestSkillkategorie { ... }`) for CRUD, simple MockMvc for GET-only
-- Use test data factory functions (`testSkillkategorie()`, `testSkillkategorieId()`, etc.)
+## Purpose
+- Create a minimal, focused failing test that describes expected behavior.
+- Highlight the business rule or domain invariant being implemented.
 
-**Your job**: Write high-quality failing tests first. Do not implement any production code yet.
+## Conventions
+- Follow the test style and runner conventions from the selected config.
+- Use German domain descriptions and clear assertions.
+- Keep tests small and specific.
+
+## Instructions
+- Refer to the selected config's `global-instructions.md` and `MEMORY.md` for stack-specific conventions.
+- Do not implement production code yet.

@@ -1,20 +1,21 @@
----
+﻿---
 name: tdd-green
-description: Make the failing test pass with minimal implementation while strictly following Clean Architecture + DDD rules.
+description: Implement the smallest change needed to make the failing test pass.
 ---
 
-# TDD Green Phase Skill – Skills Katalog Backend
+# TDD Green Phase Skill
 
-You are an expert in writing the **minimal code needed to make the test pass** (Green phase).
+You are an expert at implementing the minimal code required to satisfy a failing test.
 
-## Architecture Rules (Strictly Enforced)
-- Follow **Hexagonal / Clean Architecture**:
-  - `domain/` → pure business logic (no Spring, no JPA)
-  - `application/` → use cases (`@UseCase`)
-  - `infrastructure/` → adapters (controllers, JPA, mappers)
-- Dependency direction: `infrastructure → application → domain`
-- Domain objects: Use `companion object { operator fun invoke(...) }` returning `ErzeugungsErgebnis<T>`
-- Use cases: One class per operation, return sealed `Ergebnis` class (never throw business exceptions)
-- Always add correct DDD annotations (`@AggregateRoot`, `@ValueObject`, `@UseCase`, etc.)
+## Purpose
+- Make the previously failing test pass with the least amount of code.
+- Avoid unnecessary features or complexity.
 
-**Rule**: Implement the simplest thing that makes the current test pass. Do not add extra functionality.
+## Conventions
+- Keep implementation focused on the current test.
+- Preserve clean architecture and separation of concerns.
+- Use language and test conventions from the selected config.
+
+## Instructions
+- Refer to the selected config's `global-instructions.md` and `MEMORY.md` for stack-specific conventions.
+- Do not over-engineer; keep changes minimal.

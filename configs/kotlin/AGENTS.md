@@ -22,11 +22,9 @@ Dieses Repository enthält mein persönliches agentenbasiertes Entwicklungs-Setu
 | `tdd-red`                   | Schreibt failing Tests zuerst                        | tdd-coordinator            |
 | `tdd-green`                 | Minimaler Code zum Bestehen der Tests                | tdd-coordinator            |
 | `tdd-refactor`              | Verbessert Code bei grünen Tests                     | tdd-coordinator            |
-| `property-test-generator`   | Generiert Property-Based Tests                        | Swarm / Domain-Schwerpunkt |
+| `property-test-generator`   | Generiert Property-Based Tests (Kotest + Arb)        | Swarm / Domain-Schwerpunkt |
 | `crap-analyzer`             | Führt CRAP-Analyse durch und identifiziert Risiken   | Quality Gates              |
 | `git-orchestrator`          | Branching, atomare Commits, Squash, PR-Vorbereitung  | Swarm                      |
-| `grill-with-docs`           | Stress-tests plans against domain language, context, and documentation | Concept / Review           |
-| `zoom-out`                  | Provide a broader, higher-level perspective on relevant modules and callers | Exploration / Design       |
 | `architectural-reviewer`    | Strenges Architectural Review (Clean Architecture)   | Quality Gates              |
 | `coverage-check`            | Überprüft Testabdeckung und Qualität                 | Quality Gates              |
 | `mutation-testing`          | Führt Mutation Testing durch                         | Quality Gates              |
@@ -48,10 +46,6 @@ Dieses Repository enthält mein persönliches agentenbasiertes Entwicklungs-Setu
 - `.vscode/tasks.json` für schnellen Start aller Agenten
 - Empfohlenes Multi-Terminal Layout (Swarm)
 - Default-Modell: `claude-haiku-4.5` (kostengünstig)
-
-## Konfiguration
-
-Dieses Repository unterstützt mehrere Config-Pakete in `configs/`, z. B. `configs/kotlin/` und `configs/python/`.
 
 ## Installation
 

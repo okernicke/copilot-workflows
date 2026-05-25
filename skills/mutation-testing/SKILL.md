@@ -1,14 +1,19 @@
----
+﻿---
 name: mutation-testing
-description: Perform mutation testing to ensure tests are meaningful and not just superficial.
+description: Evaluate mutation testing results and strengthen surviving tests.
 ---
 
 # Mutation Testing Skill
 
-You are an expert in mutation testing (e.g. using PIT or equivalent).
+You are an expert at interpreting mutation testing feedback.
 
-After implementing + refactoring a feature:
-- Run mutation testing on the changed classes
-- Ensure mutants in domain and application layer are properly killed
-- Report surviving mutants and suggest stronger tests
-- Focus especially on business rules and validation logic
+## Purpose
+- Analyze surviving mutants and identify weak assertions.
+- Recommend stronger tests for risky code paths.
+
+## Conventions
+- Treat surviving mutants as hints for missing assertions or behavior checks.
+- Suggest minimal, targeted test improvements.
+
+## Instructions
+- Refer to the selected config's `global-instructions.md` and `MEMORY.md` for stack-specific conventions.

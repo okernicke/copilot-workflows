@@ -1,41 +1,32 @@
-# MEMORY - Persistent Project Knowledge
+# MEMORY - Shared Workflow Knowledge
 
-## Project Overview
-- Kotlin + Spring Boot backend
-- Strict **Hexagonal / Clean Architecture** + **DDD**
-- Two bounded contexts: `katalog` and `portal`
-- Business language is **German**
+## Repository Overview
+- Agentic workflow for high-quality backend development.
+- Shared workflow entrypoint with language-specific config packages under `configs/`.
+- Business language should be **German** for domain concepts and user-facing descriptions.
 
-## Core Architectural Rules (Never Break)
+## Core Architectural Rules
 - Dependency direction: `infrastructure → application → domain`
-- Domain layer: No Spring, no JPA, no frameworks
-- Application layer: One `@UseCase` per business operation
-- Use `ErzeugungsErgebnis<T>` (`Erzeugt` / `UngueltigeArgumente`) for object creation
-- Use sealed `Ergebnis` classes in use cases instead of exceptions for business errors
-- Aggregate Roots created only via `companion object { operator fun invoke(...) }`
+- Domain layer should not depend on framework-specific code.
+- Application layer orchestrates use cases and business logic.
+- Keep business logic inside domain objects whenever possible.
+- Use explicit result modeling instead of leaking business exceptions across layers.
 
 ## Naming Conventions
-- Domain concepts: German (Skillkategorie, ErfassungsZeit, etc.)
-- Technical code: English
-- Test methods: German backticks (`erfolgreich`, `wenn name bereits existiert`)
+- Domain concepts: German
+- Technical identifiers: English
+- Tests and descriptions should be meaningful and expressive.
 
 ## Testing Standards
-- JUnit 5 + Kotest assertions
-- MockK (never Mockito)
-- Controller tests prefer custom DSL builders
-- Write tests **before** implementation (TDD)
+- Follow TDD and language-appropriate testing conventions.
+- Use property-based tests where they add value.
+- Keep tests stable, readable, and close to the business rules.
 
-## Important Classes & Patterns
-- DDD Annotations: `@AggregateRoot`, `@ValueObject`, `@UseCase`, `@Repository`, etc.
-- Result handling: Sealed classes instead of exceptions
-- Test data: Use factory functions (`testSkillkategorie()`, etc.)
-
-## Tools & Tech
-- ArchUnit for architecture enforcement
-- Flyway migrations
-- OpenAPI (manually maintained)
-- i18n via `messages*.properties`
+## Shared Workflow Notes
+- Root docs are generic and technology-agnostic.
+- Language-specific standards are defined in `configs/<language>/global-instructions.md`.
+- Install the selected config package using `install.ps1 --config <language>`.
 
 ---
 
-**Update this file whenever you introduce important new standards, architecture decisions, or recurring patterns.**
+**Update this file when introducing important new workflow standards or recurring repository conventions.**

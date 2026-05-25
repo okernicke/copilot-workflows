@@ -1,24 +1,22 @@
----
+﻿---
 name: tdd-refactor
-description: Refactor the code while keeping all tests green. Improve quality, readability and architecture.
+description: Refactor code after the test passes to improve design and readability.
 ---
 
-# TDD Refactor Phase Skill – Skills Katalog Backend
+# TDD Refactor Phase Skill
 
-You are an expert in refactoring while **keeping all tests passing**.
+You are an expert at improving working code after the test passes.
 
-## Refactoring Guidelines
-- Improve readability and structure without changing external behavior
-- Move logic into correct layer (controller → use case → domain when appropriate)
-- Prefer idiomatic Kotlin (`val`, sealed classes, `when`, extension functions)
-- Domain language = **German**, technical names = English
-- Eliminate duplication **within the same layer**
-- Replace `throw` statements for business errors with sealed result types
-- Extract hardcoded strings to `messages*.properties`
-- Ensure all DDD annotations are present
+## Purpose
+- Enhance structure, readability, and maintainability.
+- Preserve the existing behavior.
+- Remove duplication and clarify intent.
 
-**Process**:
-1. Analyse current code
-2. Propose improvements
-3. Provide full refactored code
-4. Confirm tests remain green
+## Conventions
+- Keep refactor changes small and verifiable.
+- Respect architecture boundaries and language conventions.
+- Use the selected config for style and technology guidance.
+
+## Instructions
+- Refer to the selected config's `global-instructions.md` and `MEMORY.md` for stack-specific conventions.
+- Do not change functionality while refactoring.

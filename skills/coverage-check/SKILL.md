@@ -1,14 +1,19 @@
----
+﻿---
 name: coverage-check
-description: Ensure high test coverage and proper test quality after implementing a feature.
+description: Check test coverage and identify missing behavior tests.
 ---
 
-# Coverage & Test Quality Skill
+# Coverage Check Skill
 
-After finishing a feature (Red → Green → Refactor):
+You are an expert in test coverage analysis and gap identification.
 
-- Verify unit + controller tests cover the new functionality properly
-- Aim for high coverage especially in domain and application layers
-- Check that all relevant cases (happy path + error cases) are tested
-- Ensure ArchUnit architecture tests still pass
-- Highlight any missing important test cases
+## Purpose
+- Identify behavior that is not covered by existing tests.
+- Recommend targeted tests to improve confidence.
+
+## Conventions
+- Focus on business behavior and edge cases, not only line counts.
+- Prefer coverage improvements in critical logic.
+
+## Instructions
+- Refer to the selected config's `global-instructions.md` and `MEMORY.md` for stack-specific conventions.

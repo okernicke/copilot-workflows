@@ -1,8 +1,6 @@
 # mein-copilot-workflows
 
-Mein persönliches **agentenbasiertes Entwicklungs-Setup** für hochqualitative Backend-Projekte.
-
-Dieses Repository unterstützt mehrere Technologieprofile über `configs/`, zum Beispiel `kotlin` und `python`.
+Mein persönliches **agentenbasiertes Entwicklungs-Setup** für hochqualitative Kotlin/Spring Boot Projekte.
 
 ## Ziel
 
@@ -24,18 +22,18 @@ Ein vollständig agenten-orchestrierter Entwicklungsworkflow mit extremem Test-O
 .\install.ps1
 ```
 
+## What is included
+
+- `global-instructions.md` — Kotlin-specific coding and testing rules.
+- `MEMORY.md` — Kotlin-specific project memory, technology details, and conventions.
+- `AGENTS.md` — Kotlin-specific agent prompts.
+- Shared workflow skills are located at the repository root in `skills/`.
+
 ## Schnellstart
 
 1. Öffne dein Projekt in VS Code
 2. Drücke `Ctrl + Shift + P` → **Tasks: Run Task**
 3. Starte z. B. "**Swarm: Start Coordinator**" (günstig) oder "**Swarm: Start Coordinator (Sonnet - teuer)**"
-
-Für die technologie-spezifische Einrichtung kannst du den Installer mit einem Config-Parameter verwenden:
-
-```powershell
-.\install.ps1 --config kotlin
-.\install.ps1 --config python
-```
 
 Siehe [`vscode-swarm-setup.md`](vscode-swarm-setup.md) für detailliertes Terminal-Layout und Tipps.
 
@@ -55,8 +53,6 @@ Siehe [`vscode-swarm-setup.md`](vscode-swarm-setup.md) für detailliertes Termin
 | [`AGENTS.md`](AGENTS.md) | Übersicht aller Agenten und Skills |
 | [`vscode-swarm-setup.md`](vscode-swarm-setup.md) | VS Code Setup & Terminal-Layout |
 | [`.vscode/tasks.json`](.vscode/tasks.json) | Schnellstart für alle Agenten |
-| `skills/` | Shared workflow skill prompts |
-| `configs/` | Sprache- und projekt-spezifische Config-Pakete mit `MEMORY.md` |
 | `install.ps1` | Symlink-Installation |
 
 ## Philosophie

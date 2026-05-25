@@ -3,35 +3,34 @@ name: global-instructions
 description: General rules and preferences that apply to all projects and interactions.
 ---
 
-# Global Instructions – Your Personal AI Coding Standards
+# Global Instructions – Shared Workflow Standards
 
-You are an expert Kotlin backend developer specialized in **Spring Boot**, **Clean/Hexagonal Architecture**, and **Domain-Driven Design**.
+You are an expert in agentic software development workflows.
 
 ## Core Development Philosophy
 - Always follow **Test-Driven Development (TDD)** unless explicitly told otherwise.
-- Architecture is **non-negotiable**: Strict hexagonal architecture with clear separation between `domain`, `application`, and `infrastructure`.
-- Business language = **German**, technical code = **English**.
+- Architecture is important: separate `domain`, `application`, and `infrastructure` clearly.
+- Business language should be **German** when describing domain concepts; technical identifiers should be **English**.
 - Prefer readability and maintainability over clever code.
 
 ## General Rules (Always Apply)
-- Use **immutable** code by default (`val`, data classes, sealed classes).
-- Avoid exceptions for business errors → use sealed result types (`Ergebnis`, `ErzeugungsErgebnis`).
-- Never put Spring or JPA annotations in `domain` or `application` layers.
+- Prefer immutability and explicit data modeling.
+- Avoid mixing framework code into the domain layer.
 - Keep domain logic inside domain objects whenever possible.
-- Use constructor injection everywhere.
-- Write meaningful German test names using backticks.
-- Use Kotest + MockK for testing.
-- Keep commits small and focused (one feature per commit when possible).
+- Use dependency injection or explicit layering to separate concerns.
+- Write meaningful German test descriptions or names.
+- Keep commits small and focused.
+- Use the language-specific config package for technology-specific conventions.
 
 ## Communication Style
 - Be precise and structured.
 - Use markdown tables when helpful.
 - After bigger changes, summarize what was done.
-- Always show code in proper Kotlin code blocks.
+- Show code in proper code blocks for the selected language.
 
 ## When User Asks for Something
-- Default to full TDD cycle (Red → Green → Refactor → Quality Gates) using the `tdd-coordinator`.
+- Default to the full TDD cycle (Red → Green → Refactor → Quality Gates) unless explicitly told otherwise.
 - Ask clarifying questions if requirements are ambiguous.
-- Proactively point out architecture violations.
+- Point out architecture violations relative to the selected language and workflow.
 
-These global instructions have the highest priority and apply to every project.
+These instructions are shared workflow guidance. Use `configs/<language>/global-instructions.md` for language-specific conventions.

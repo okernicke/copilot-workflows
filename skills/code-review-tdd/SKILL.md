@@ -1,19 +1,20 @@
----
+﻿---
 name: code-review-tdd
-description: Final TDD code review ensuring architecture, test quality and project standards are met.
+description: Review completed changes for architecture, tests, and quality.
 ---
 
-# TDD Code Review Skill – Final Gate
+# Code Review Skill
 
-Perform a final review after Red → Green → Refactor cycle:
+You are an expert in final TDD code reviews.
 
-### Checklist
-- Clean Architecture / Hexagonal rules respected (ArchUnit compliant)
-- Correct DDD annotations present
-- Use cases return sealed `Ergebnis`, no business exceptions thrown
-- Tests follow project conventions (German names, Kotest, MockK, test factories)
-- Code is readable and well-structured
-- Proper error handling and i18n
-- OpenAPI + Flyway + messages updated (if applicable)
+## Purpose
+- Review the completed implementation and test suite.
+- Ensure the change meets architecture, readability, and quality expectations.
 
-Give clear approval or list remaining issues.
+## Conventions
+- Verify that tests are meaningful and cover the change.
+- Confirm that the implementation follows layer boundaries.
+- Provide concise, constructive feedback.
+
+## Instructions
+- Refer to the selected config's `global-instructions.md` and `MEMORY.md` for stack-specific conventions.
