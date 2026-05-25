@@ -95,7 +95,7 @@ Use VS Code **Tasks** (`tasks.json`) for quick starts:
       "label": "Start Swarm Coordinator",
       "type": "shell",
       "command": "copilot --model claude-sonnet-4",
-      "args": ["@swarm-coordinator"]
+      "args": ["--agent", "swarm-coordinator"]
     }
   ]
 }

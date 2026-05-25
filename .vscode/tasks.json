@@ -5,7 +5,7 @@
       "label": "Swarm: Start Coordinator",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "claude-haiku-4.5", "@swarm-coordinator"],
+      "args": ["--model", "claude-haiku-4.5", "--agent", "swarm-coordinator"],
       "group": "test",
       "presentation": {
         "echo": true,
@@ -19,7 +19,7 @@
       "label": "Swarm: Start TDD Coordinator",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "claude-haiku-4.5", "@tdd-coordinator"],
+      "args": ["--model", "claude-haiku-4.5", "--agent", "tdd-coordinator"],
       "group": "test",
       "presentation": {
         "echo": true,
@@ -32,7 +32,7 @@
       "label": "Swarm: Start Property Test Generator",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "claude-haiku-4.5", "@property-test-generator"],
+      "args": ["--model", "claude-haiku-4.5", "--agent", "property-test-generator"],
       "group": "test",
       "presentation": {
         "echo": true,
@@ -45,7 +45,7 @@
       "label": "Swarm: Start Quality Guardian",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "claude-haiku-4.5", "@crap-analyzer"],
+      "args": ["--model", "claude-haiku-4.5", "--agent", "crap-analyzer"],
       "group": "test",
       "presentation": {
         "echo": true,
@@ -58,7 +58,7 @@
       "label": "Swarm: Start Git Orchestrator",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "claude-haiku-4.5", "@git-orchestrator"],
+      "args": ["--model", "claude-haiku-4.5", "--agent", "git-orchestrator"],
       "group": "test",
       "presentation": {
         "echo": true,
@@ -83,7 +83,7 @@
       "label": "Swarm: Start Coordinator (Sonnet - teuer)",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "claude-sonnet-4", "@swarm-coordinator"],
+      "args": ["--model", "claude-sonnet-4", "--agent", "swarm-coordinator"],
       "group": "test",
       "presentation": {
         "echo": true,
