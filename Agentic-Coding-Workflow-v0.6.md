@@ -33,6 +33,8 @@ my-copilot-workflows/
 │   │   └── README.md
 │   ├── configs.json
 │   └── README.md
+├── agents/
+├── skills/
 ├── .vscode/
 ├── instructions/
 ├── vscode-swarm-setup.md
