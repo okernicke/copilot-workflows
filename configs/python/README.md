@@ -9,6 +9,8 @@ This package contains the Python-specific configuration for the agentic workflow
 
 Shared workflow agents and skills live at the repository root in `agents/` and `skills/`.
 
+For config package requirements and manifest conventions, see `../README.md` and `../configs.json`.
+
 ## How to use
 
 Install the Python config via `install.ps1 --config python`.

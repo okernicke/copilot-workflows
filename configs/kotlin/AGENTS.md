@@ -1,54 +1,54 @@
 # Agents Overview – Copilot Workflows (v0.6)
 
-Dieses Repository enthält mein persönliches agentenbasiertes Entwicklungs-Setup für hochqualitative, testgetriebene Softwareentwicklung.
+This package contains the Kotlin-specific agent and skill documentation for the shared workflow.
 
-## Haupt-Agenten
+## Core Agents
 
-### `swarm-coordinator` (Master Agent)
-- **Purpose**: Orchestriert mehrere Agenten parallel (Swarm-Modus)
-- **Ziel**: Maximale Parallelisierung und Koordination des gesamten Workflows
-- **Empfohlen für**: Komplexe Features und vollständige User Stories
+### `swarm-coordinator` (Master agent)
+- **Purpose**: Orchestrates multiple agents in parallel using a swarm-style workflow.
+- **Goal**: Maximize parallel work while preserving quality.
+- **Best for**: Complex features and full story delivery.
 
-### `tdd-coordinator` (Klassischer Haupt-Agent)
-- **Purpose**: Führt den klassischen TDD-Zyklus (Red → Green → Refactor → Quality Gates) durch
-- **Empfohlen für**: Einfachere Änderungen oder wenn kein voller Swarm benötigt wird
+### `tdd-coordinator` (Classic TDD agent)
+- **Purpose**: Runs the traditional TDD cycle: Red → Green → Refactor → Quality Gates.
+- **Best for**: Smaller changes or when a full swarm is not required.
 
-## Spezialisierte Skills
+## Specialized Skills
 
-| Skill                        | Purpose                                              | Verwendet von              |
+| Skill                        | Purpose                                              | Used by                    |
 |-----------------------------|------------------------------------------------------|----------------------------|
-| `concept-generator`         | Übersetzt User Stories in detaillierte Concepts      | Swarm / Mensch             |
-| `acceptance-test-writer`    | Erstellt Gherkin Acceptance Tests                    | Swarm / nach Concept       |
-| `tdd-red`                   | Schreibt failing Tests zuerst                        | tdd-coordinator            |
-| `tdd-green`                 | Minimaler Code zum Bestehen der Tests                | tdd-coordinator            |
-| `tdd-refactor`              | Verbessert Code bei grünen Tests                     | tdd-coordinator            |
-| `property-test-generator`   | Generiert Property-Based Tests (Kotest + Arb)        | Swarm / Domain-Schwerpunkt |
-| `crap-analyzer`             | Führt CRAP-Analyse durch und identifiziert Risiken   | Quality Gates              |
-| `git-orchestrator`          | Branching, atomare Commits, Squash, PR-Vorbereitung  | Swarm                      |
-| `architectural-reviewer`    | Strenges Architectural Review (Clean Architecture)   | Quality Gates              |
-| `coverage-check`            | Überprüft Testabdeckung und Qualität                 | Quality Gates              |
-| `mutation-testing`          | Führt Mutation Testing durch                         | Quality Gates              |
-| `code-review-tdd`           | Finales Code Review nach Projektstandards            | Final Gate                 |
+| `concept-generator`         | Converts user stories into a structured concept      | Swarm / human review       |
+| `acceptance-test-writer`    | Writes Gherkin acceptance tests based on the concept | Swarm / concept review     |
+| `tdd-red`                   | Writes failing tests first                           | `tdd-coordinator`          |
+| `tdd-green`                 | Writes minimal code to pass the tests                | `tdd-coordinator`          |
+| `tdd-refactor`              | Refactors code after tests pass                      | `tdd-coordinator`          |
+| `property-test-generator`   | Generates property-based tests                       | Swarm / domain-focused     |
+| `crap-analyzer`             | Performs CRAP risk analysis and design evaluation    | Quality Gates              |
+| `git-orchestrator`          | Manages branching, atomic commits, squash, and PR prep | Swarm                    |
+| `architectural-reviewer`    | Reviews architecture for clean boundaries and dependencies | Quality Gates          |
+| `coverage-check`            | Checks test coverage and quality                     | Quality Gates              |
+| `mutation-testing`          | Executes mutation testing                             | Quality Gates              |
+| `code-review-tdd`           | Performs the final TDD-style code review             | Final gate                 |
 
-## Vollständiger Workflow (v0.6)
+## Workflow (v0.6)
 
 1. **Concept** → `concept-generator`
 2. **Gherkin Acceptance Tests** → `acceptance-test-writer`
-3. **Menschliche Abnahme** (Concept + Acceptance Tests)
-4. **Swarm Implementation**:
-   - `tdd-coordinator` + `property-test-generator` parallel
-   - `git-orchestrator` für Versionierung
-   - Quality Gates (`crap-analyzer`, `architectural-reviewer`, Mutation, Coverage)
-5. **Final Review & Merge**
+3. Human review and approval
+4. **Swarm implementation**:
+   - `tdd-coordinator` + `property-test-generator` in parallel
+   - `git-orchestrator` for commit hygiene
+   - Quality gates (`crap-analyzer`, `architectural-reviewer`, `mutation-testing`, `coverage-check`)
+5. **Final review & merge**
 
-## VS Code Integration
+## VS Code integration
 
-- `.vscode/tasks.json` für schnellen Start aller Agenten
-- Empfohlenes Multi-Terminal Layout (Swarm)
-- Default-Modell: `claude-haiku-4.5` (kostengünstig)
+- `.vscode/tasks.json` starts the main agents quickly
+- Recommended multi-terminal layout for swarm workflows
+- Default model: `claude-haiku-4.5`
 
 ## Installation
 
 ```powershell
-# Als Administrator ausführen
-.\install.ps1
+.\install.ps1 --config kotlin
+```

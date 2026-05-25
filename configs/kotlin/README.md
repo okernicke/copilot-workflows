@@ -1,70 +1,74 @@
-# mein-copilot-workflows
+# Kotlin Config Package
 
-Mein persönliches **agentenbasiertes Entwicklungs-Setup** für hochqualitative Kotlin/Spring Boot Projekte.
+This package contains the Kotlin-specific workflow profile for Copilot Workflows.
 
-## Ziel
+## Goal
 
-Ein vollständig agenten-orchestrierter Entwicklungsworkflow mit extremem Test-Overkill (TDD + Property-Based + Mutation + CRAP + Architecture Review), inspiriert von Uncle Bob’s Swarm-Ansätzen.
+Provide Kotlin/Spring Boot conventions, architecture guidance, and workflow integration for the shared agentic setup.
 
 ## Features
 
-- **Swarm-First**: Parallele Agenten via VS Code Multi-Terminals
-- **Strenge Clean Architecture + DDD**
-- **Automatisierte Git-Orchestrierung** (Branching, atomare Commits, Squash, PR-Vorbereitung)
-- **Kostenoptimiert** (Default: Claude Haiku-4.5)
-- **Projektunabhängig** durch Symlinks nach `~/.copilot/`
-- **Menschliche Kontrollpunkte** nur bei Concept, Acceptance Tests und finaler Abnahme
+- **Swarm-first**: Parallel agent execution via VS Code multi-terminal layouts
+- **Kotlin + Spring Boot** conventions
+- **Kotest + MockK** support
+- **Clean Architecture + DDD** guidance
+- Config-specific instructions and memory for Kotlin projects
+- Shared workflow agents and skills remain at the repo root
 
 ## Installation
 
 ```powershell
-# Als Administrator ausführen
-.\install.ps1
+.\install.ps1 --config kotlin
 ```
 
 ## What is included
 
 - `global-instructions.md` — Kotlin-specific coding and testing rules.
-- `MEMORY.md` — Kotlin-specific project memory, technology details, and conventions.
-- `AGENTS.md` — Kotlin-specific agent prompts.
-- Shared workflow skills are located at the repository root in `skills/`.
+- `MEMORY.md` — Kotlin-specific project memory, conventions, and architecture guidance.
+- `README.md` — config-specific documentation and usage notes.
+- `AGENTS.md` — config-specific agent overview.
+- Optional `agents/` if additional Kotlin-specific prompts are needed.
 
-## Schnellstart
+Shared workflow agents and skills are located at the repository root in `agents/` and `skills/`.
 
-1. Öffne dein Projekt in VS Code
-2. Drücke `Ctrl + Shift + P` → **Tasks: Run Task**
-3. Starte z. B. "**Swarm: Start Coordinator**" (günstig) oder "**Swarm: Start Coordinator (Sonnet - teuer)**"
+For config package requirements and manifest conventions, see `../README.md` and `../configs.json`.
 
-Siehe [`vscode-swarm-setup.md`](vscode-swarm-setup.md) für detailliertes Terminal-Layout und Tipps.
+## Quick start
+
+1. Open your project in VS Code.
+2. Press `Ctrl + Shift + P` → **Tasks: Run Task**.
+3. Start `Swarm: Start Coordinator` or `Swarm: Start Coordinator (Sonnet - expensive)`.
+
+See [`vscode-swarm-setup.md`](vscode-swarm-setup.md) for terminal layout and setup tips.
 
 ## Workflow (v0.6)
 
 1. **Concept** → `@concept-generator`
 2. **Gherkin Acceptance Tests** → `@acceptance-test-writer`
-3. Menschliche Review & Abnahme
-4. **Swarm Implementation** → `@swarm-coordinator`
-5. Quality Gates + Merge
+3. Human review and approval
+4. **Swarm implementation** → `@swarm-coordinator`
+5. Quality gates + merge
 
-## Wichtige Dateien
+## Important files
 
-| Datei | Zweck |
-|-------|------|
-| [`Agentic-Coding-Workflow-v0.6.md`](Agentic-Coding-Workflow-v0.6.md) | Gesamtkonzept & detaillierter Workflow |
-| [`AGENTS.md`](AGENTS.md) | Übersicht aller Agenten und Skills |
-| [`vscode-swarm-setup.md`](vscode-swarm-setup.md) | VS Code Setup & Terminal-Layout |
-| [`.vscode/tasks.json`](.vscode/tasks.json) | Schnellstart für alle Agenten |
-| `install.ps1` | Symlink-Installation |
+| File | Purpose |
+|------|---------|
+| [`Agentic-Coding-Workflow-v0.6.md`](Agentic-Coding-Workflow-v0.6.md) | Concept and workflow reference |
+| [`AGENTS.md`](AGENTS.md) | Kotlin config agent overview |
+| [`vscode-swarm-setup.md`](vscode-swarm-setup.md) | VS Code terminal layout guide |
+| [`.vscode/tasks.json`](.vscode/tasks.json) | Quick start tasks for agents |
+| `install.ps1` | Symlink-based setup |
 
-## Philosophie
+## Philosophy
 
-Maximale Qualität bei minimaler manueller Routinearbeit durch intelligente, spezialisierte Agenten mit klarer Verantwortungstrennung.
+Maximize quality with minimal manual routine work using intelligent, specialized agents and clear responsibility separation.
 
 ---
 
-**Nächste Schritte**
+**Next steps**
 
-- Erste echte User Story komplett durch den Workflow führen
-- Technologie-spezifische Konfigurationen auslagern (Kotlin, Python, etc.)
-- Weitere Skills (z. B. `documentation-updater`)
+- Run a real feature through the workflow.
+- Expand language-specific config packages.
+- Add more shared skills such as `documentation-updater`.
 
 ---

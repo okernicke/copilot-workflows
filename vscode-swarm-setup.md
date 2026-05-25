@@ -1,24 +1,24 @@
 # VS Code Swarm Setup – Agentic Coding Workflow
 
-## Schnellstart
+## Quick start
 
-1. `Ctrl+Shift+P` → **Tasks: Run Task**
-2. Wähle z. B. "**Swarm: Start Coordinator**" (standardmäßig Haiku-4.5 – günstig)
+1. Press `Ctrl+Shift+P` → **Tasks: Run Task**.
+2. Start `Swarm: Start Coordinator` (default model: Haiku 4.5).
 
-**Tipp**: Für komplexe Refactorings oder Architekturentscheidungen die Variante "**Swarm: Start Coordinator (Sonnet - teuer)**" verwenden.
+**Tip**: Use `Swarm: Start Coordinator (Sonnet - expensive)` for complex refactorings or deep architecture decisions.
 
-## Terminal-Layout Empfehlung
+## Recommended terminal layout
 
 - Terminal 1: Swarm Coordinator (Haiku)
 - Terminal 2: TDD Coordinator (Haiku)
 - Terminal 3: Property Test Generator (Haiku)
 - Terminal 4: Quality + Git (Haiku)
 
-**Kostenstrategie**: 
-- Default = günstigstes Modell (Haiku)
-- Nur bei Bedarf auf stärkere Modelle wechseln
+**Cost strategy**:
+- Default = the cheapest model (Haiku)
+- Upgrade to stronger models only when needed
 
 ---
 
-**Status**: v0.5 – Kostenoptimierung integriert
+**Status**: v0.5 – cost optimization integrated
 

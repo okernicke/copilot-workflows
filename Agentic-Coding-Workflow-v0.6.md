@@ -1,113 +1,124 @@
-# Agentic Coding Workflow – Mein Zukünftiges Entwicklungs-Setup (v0.6)
+# Agentic Coding Workflow – My Future Development Setup (v0.6)
 
-**Ziel**: Ein vollständig agentenbasiertes, hochautomatisiertes Entwicklungs-Setup mit extremem Test-Overkill, inspiriert von Uncle Bob’s Swarm-Ansätzen.  
-**Status**: Reifes, produktionsreifes Konzept mit generischem Workflow und sprachspezifischen Config-Paketen.
+**Goal**: A fully agentic, highly automated development workflow with strong quality controls, inspired by Uncle Bob’s swarm-style practices.
+**Status**: Mature concept updated for generic workflow and language-specific config packages.
 
-## 1. Grundprinzipien
+## 1. Core Principles
 
-- **Swarm-First**: Mehrere spezialisierte Agenten arbeiten parallel (VS Code Multi-Terminal).
-- **TDD + Property-Based Testing** als Non-Negotiable.
-- **Test-Overkill**: Unit + Integration + Gherkin Acceptance + Property-Based + Mutation + CRAP + Architecture Review.
-- **Kostenoptimierung**: Default = `claude-haiku-4.5` (günstig). Nur bei Bedarf auf stärkere Modelle (z. B. Sonnet) wechseln.
-- **Projektunabhängiges Setup**: Eigenes Git-Repo (`mein-copilot-workflows`) mit Symlinks nach `~/.copilot/`.
-- **Menschliche Kontrollpunkte**: Nur bei Concept-Review, Acceptance-Test-Review und finaler Abnahme.
+- **Swarm-first**: Multiple specialized agents run in parallel using VS Code multi-terminal layouts.
+- **TDD + Property-Based Testing** are non-negotiable.
+- **Test overkill**: Unit + Integration + Gherkin Acceptance + Property-Based + Mutation + CRAP + Architecture Review.
+- **Cost-aware**: Default model is `claude-haiku-4.5`. Upgrade to a stronger model only when needed.
+- **Project-independent setup**: A dedicated workflow repo with symlinks into `~/.copilot/`.
+- **Human checkpoints** only at concept review, acceptance-test review, and final approval.
 
-## 2. Repository-Struktur
+## 2. Repository Structure
 
 ```bash
-mein-copilot-workflows/
+my-copilot-workflows/
 ├── configs/
 │   ├── kotlin/
-│   │   ├── agents/
-│   │   ├── skills/
-│   │   ├── instructions/
+│   │   ├── global-instructions.md
 │   │   ├── MEMORY.md
 │   │   ├── README.md
-│   │   └── ...
-│   └── python/
-│       ├── agents/
-│       ├── skills/
-│       ├── instructions/
-│       ├── MEMORY.md
-│       ├── README.md
-│       └── ...
+│   │   └── AGENTS.md
+│   ├── python/
+│   │   ├── global-instructions.md
+│   │   ├── MEMORY.md
+│   │   ├── README.md
+│   │   └── AGENTS.md
+│   ├── template/
+│   │   ├── global-instructions.md
+│   │   ├── MEMORY.md
+│   │   └── README.md
+│   ├── configs.json
+│   └── README.md
 ├── .vscode/
 ├── instructions/
 ├── vscode-swarm-setup.md
 ├── install.ps1
 ├── MEMORY.md
 ├── AGENTS.md
-└── README.md
+├── README.md
+└── Agentic-Coding-Workflow-v0.6.md
 ```
 
-## 3. Konfigurationsmodell
+## 3. Configuration model
 
-- `configs/common/` (oder der Root) enthält die generische Workflow-Beschreibung und Shared Assets.
-- `configs/kotlin/` enthält die Kotlin- und Spring Boot-spezifischen Agenten- und Skill-Prompts.
-- `configs/python/` enthält die Python-spezifischen Agenten- und Skill-Prompts.
-- Der Installer wählt beim Setup den gewünschten Config-Paket aus und installiert gemeinsame sowie sprachspezifische Inhalte.
+- `configs/` contains language-specific workflow packages.
+- Root-level `skills/` and `agents/` hold shared workflow assets.
+- Each package provides `global-instructions.md`, `MEMORY.md`, and `README.md`.
+- The installer picks the chosen config package and installs the shared workflow plus language-specific content.
 
-## 4. Der Vollständige Kern-Workflow (pro User Story / Feature)
+## 4. Complete core workflow (per user story / feature)
 
-### Phase 0: Vorbereitung
-- User Story als `user-stories/feature-xyz.md` anlegen.
+### Phase 0: Preparation
+- Create the user story or feature briefing.
 
-### Phase 1: Concept Creation
+### Phase 1: Concept creation
 - **Agent**: `concept-generator`
-- **Output**: Konzeptdatei im Projektkontext
-- **Mensch**: Review + Klärung aller offenen Punkte → Abnahme.
+- **Output**: A project-specific concept document.
+- **Human**: Review, clarify open questions, approve the concept.
 
-### Phase 2: Acceptance Tests (Gherkin)
+### Phase 2: Acceptance tests (Gherkin)
 - **Agent**: `acceptance-test-writer`
-- **Output**: Gherkin Feature-Datei
-- **Mensch**: Review + Abnahme der Akzeptanztests.
+- **Output**: A Gherkin feature file.
+- **Human**: Review and approve the acceptance tests.
 
-### Phase 3: Technische Umsetzung (Swarm-Modus)
+### Phase 3: Implementation (Swarm mode)
 
-**Swarm Coordinator** startet und koordiniert parallele Agenten:
+The `swarm-coordinator` orchestrates parallel agents:
 
-| Rolle                    | Agent                          | Aufgabe |
-|-------------------------|--------------------------------|--------|
-| **Main Coder**          | `tdd-coordinator`              | Red → Green → Refactor |
-| **Property Tester**     | `property-test-generator`      | Property-Based Tests |
-| **Quality Guardian**    | `crap-analyzer`                | CRAP-Analyse + Risikobewertung |
-| **Git Master**          | `git-orchestrator`             | Branching, atomare Commits, Squash, PR |
-| **Architecture Guard**  | `architectural-reviewer`       | Architektur-Review |
-| **Final Reviewer**      | `code-review-tdd`              | Finaler Code-Review |
+| Role                    | Agent                          | Responsibility |
+|-------------------------|--------------------------------|----------------|
+| Main Coder              | `tdd-coordinator`              | Red → Green → Refactor |
+| Property Tester         | `property-test-generator`      | Property-based tests |
+| Quality Guardian        | `crap-analyzer`                | CRAP risk evaluation |
+| Git Master              | `git-orchestrator`             | Branching, atomic commits, squash, PR prep |
+| Architecture Guard      | `architectural-reviewer`       | Architecture review |
+| Final Reviewer          | `code-review-tdd`              | Final code review |
 
-**Typischer Ablauf in Phase 3**:
-1. Parallel: `tdd-red` + `property-test-generator`
-2. `tdd-green`
-3. `tdd-refactor`
-4. Quality Gates (parallel ausführbar)
-5. `git-orchestrator` bereitet Merge vor
+**Typical Phase 3 flow**:
+1. Run `tdd-red` + `property-test-generator` in parallel.
+2. Continue with `tdd-green`.
+3. Refactor with `tdd-refactor`.
+4. Execute the quality gates.
+5. Prepare merge with `git-orchestrator`.
 
-### Phase 4: Abschluss
-- Finale menschliche Review
-- Merge in `main`
-- Optional: `documentation-updater`
+### Phase 4: Completion
+- Final human review.
+- Merge into `main`.
+- Run `documentation-updater` to refresh `MEMORY.md`, README, OpenAPI, and related docs.
 
-## 5. Git Workflow (automatisiert)
+### Example feature flow
 
-- Branch-Namen: `feature/xyz` oder `story/xyz`
-- Commit-Prefixe: `red:`, `green:`, `refactor:`, `test:`, `chore:`, `docs:`
-- `git-orchestrator` managt alle Commits
-- Finale Merge-Commits im Conventional-Commit-Format
+1. Write the user story or brief.
+2. Use `concept-generator` to produce a clear implementation concept.
+3. Create Gherkin acceptance tests with `acceptance-test-writer`.
+4. Implement the feature in swarm mode with `tdd-coordinator`, `property-test-generator`, and quality gates.
+5. Close the change with `git-orchestrator` and `documentation-updater`.
 
-## 6. VS Code Swarm Setup
+## 5. Git workflow (automated)
 
-- Mehrere Terminals parallel (Swarm-Layout)
-- `.vscode/tasks.json` für schnelle Agenten-Starts
-- Default-Modell: Haiku-4.5
-- Kommunikation über `.swarm/communication/`
+- Branch names: `feature/xyz` or `story/xyz`
+- Commit prefixes: `red:`, `green:`, `refactor:`, `test:`, `chore:`, `docs:`
+- `git-orchestrator` manages commit hygiene.
+- Final merge commits follow conventional commit style.
 
-## 7. Vollständige Liste der Agenten & Skills
+## 6. VS Code swarm setup
 
-**Haupt-Agenten**:
-- `swarm-coordinator` (Master-Orchestrator)
+- Use multiple terminals in a swarm layout.
+- `.vscode/tasks.json` launches the main workflow agents.
+- Default model: Haiku-4.5.
+- Communication is file-based and terminal-centric, avoiding direct prompt chat collisions.
+
+## 7. Agent and skill inventory
+
+**Core agents**:
+- `swarm-coordinator`
 - `tdd-coordinator`
 
-**Spezial-Skills**:
+**Specialized skills**:
 - `concept-generator`
 - `acceptance-test-writer`
 - `property-test-generator`
@@ -117,21 +128,21 @@ mein-copilot-workflows/
 - `tdd-red`, `tdd-green`, `tdd-refactor`
 - `coverage-check`, `mutation-testing`, `code-review-tdd`
 
-## 8. Konfiguration und Erweiterung
+## 8. Configuration and extension
 
-- Die Sprache und Projektkonventionen werden über `configs/<language>/` gesteuert.
-- Der Root-Workflow bleibt technologie-agnostisch.
-- Neue Sprachen können mittels zusätzlichem Config-Paket ergänzt werden.
-
----
-
-**Status**: **v0.6 – Aktualisiert für configs/**
-**Letztes Update**: 25. Mai 2026
+- Language and project conventions live in `configs/<language>/`.
+- The root workflow stays technology-agnostic.
+- Add new languages via additional config packages.
 
 ---
 
-**Nächste Schritte**
+**Status**: **v0.6 — updated for config packages**
+**Last updated**: 25 May 2026
 
-1. Python-Konfiguration weiter ausbauen.
-2. Generic `configs/common/` bei Bedarf einführen.
-3. Weitere Skill-Pakete (`documentation-updater`, `schema-checker` etc.) hinzufügen.
+---
+
+**Next steps**
+
+1. Expand the Python config package.
+2. Consider a shared `configs/common/` package if needed.
+3. Add more workflow skills such as `documentation-updater` and `schema-checker`.
