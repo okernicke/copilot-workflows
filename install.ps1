@@ -18,7 +18,7 @@ if (-not (Test-Path $ConfigRoot)) {
     exit 1
 }
 
-Write-Host "🚀 Installing Agentic Coding Workflow Setup..." -ForegroundColor Cyan
+Write-Host "Installing Agentic Coding Workflow Setup..." -ForegroundColor Cyan
 Write-Host "Target: $CopilotRoot`n" -ForegroundColor Gray
 Write-Host "Selected config: $Config`n" -ForegroundColor Gray
 
@@ -28,7 +28,7 @@ New-Item -ItemType Directory -Path "$CopilotRoot\agents" -Force | Out-Null
 New-Item -ItemType Directory -Path "$CopilotRoot\context" -Force | Out-Null
 New-Item -ItemType Directory -Path "$CopilotRoot\swarm-configs" -Force | Out-Null
 
-Write-Host "📁 Creating symlinks for Skills..." -ForegroundColor Cyan
+Write-Host "Creating symlinks for Skills..." -ForegroundColor Cyan
 
 $skills = Get-ChildItem -Path (Join-Path $RepoRoot 'skills') -Directory | Select-Object -ExpandProperty Name
 
@@ -40,13 +40,13 @@ foreach ($skill in $skills) {
     
     if (Test-Path $source) {
         New-Item -ItemType SymbolicLink -Path $target -Target $source | Out-Null
-        Write-Host "✓ Symlinked skill: $skill" -ForegroundColor Green
+        Write-Host "Symlinked skill: $skill" -ForegroundColor Green
     } else {
-        Write-Host "⚠️  Skill not found: $skill" -ForegroundColor Yellow
+        Write-Host "Skill not found: $skill" -ForegroundColor Yellow
     }
 }
 
-Write-Host "`n🤖 Creating symlinks for Agents..." -ForegroundColor Cyan
+Write-Host "`nCreating symlinks for Agents..." -ForegroundColor Cyan
 
 $agentFiles = Get-ChildItem -Path (Join-Path $RepoRoot 'agents') -Filter '*.md' | Select-Object -ExpandProperty Name
 
@@ -58,13 +58,13 @@ foreach ($agent in $agentFiles) {
     
     if (Test-Path $source) {
         New-Item -ItemType SymbolicLink -Path $target -Target $source | Out-Null
-        Write-Host "✓ Symlinked agent: $agent" -ForegroundColor Green
+        Write-Host "Symlinked agent: $agent" -ForegroundColor Green
     } else {
-        Write-Host "⚠️  Agent not found: $agent" -ForegroundColor Yellow
+        Write-Host "Agent not found: $agent" -ForegroundColor Yellow
     }
 }
 
-Write-Host "`n📋 Setting up global files..." -ForegroundColor Cyan
+Write-Host "`nSetting up global files..." -ForegroundColor Cyan
 
 $globalFiles = @(
     @{ Source = "MEMORY.md";                  Target = "MEMORY.md" },
@@ -82,13 +82,13 @@ foreach ($file in $globalFiles) {
     
     if (Test-Path $source) {
         Copy-Item $source $target -Force
-        Write-Host "✓ Copied: $($file.Target)" -ForegroundColor Green
+        Write-Host "Copied: $($file.Target)" -ForegroundColor Green
     } else {
-        Write-Host "⚠️  File not found: $($file.Source)" -ForegroundColor Yellow
+        Write-Host "File not found: $($file.Source)" -ForegroundColor Yellow
     }
 }
 
-Write-Host "`n📋 Setting up config-specific files..." -ForegroundColor Cyan
+Write-Host "`nSetting up config-specific files..." -ForegroundColor Cyan
 
 $configFiles = @(
     @{ Source = "configs\$Config\global-instructions.md"; Target = "global-instructions.md" },
@@ -104,15 +104,15 @@ foreach ($file in $configFiles) {
     
     if (Test-Path $source) {
         Copy-Item $source $target -Force
-        Write-Host "✓ Copied config-specific file: $($file.Target)" -ForegroundColor Green
+        Write-Host "Copied config-specific file: $($file.Target)" -ForegroundColor Green
     } else {
-        Write-Host "⚠️  Config file not found: $($file.Source)" -ForegroundColor Yellow
+        Write-Host "Config file not found: $($file.Source)" -ForegroundColor Yellow
     }
 }
 
-Write-Host "`n⚙️  VS Code Swarm configuration is ready (copied via project setup)" -ForegroundColor Cyan
+Write-Host "`nVS Code Swarm configuration is ready (copied via project setup)" -ForegroundColor Cyan
 
-Write-Host "`n📂 Setting up workspace-level VS Code agents and skills..." -ForegroundColor Cyan
+Write-Host "`nSetting up workspace-level VS Code agents and skills..." -ForegroundColor Cyan
 
 $VsCodeRoot = Join-Path $RepoRoot ".vscode"
 New-Item -ItemType Directory -Path "$VsCodeRoot\agents" -Force | Out-Null
@@ -121,7 +121,7 @@ New-Item -ItemType Directory -Path "$VsCodeRoot\skills" -Force | Out-Null
 # Copy agent files to workspace
 Get-ChildItem -Path (Join-Path $RepoRoot 'agents') -Filter '*.agent.md' | ForEach-Object {
     Copy-Item $_.FullName (Join-Path $VsCodeRoot "agents\$($_.Name)") -Force | Out-Null
-    Write-Host "✓ Copied agent: $($_.Name)" -ForegroundColor Green
+    Write-Host "Copied agent: $($_.Name)" -ForegroundColor Green
 }
 
 # Copy skill files to workspace
@@ -131,11 +131,11 @@ Get-ChildItem -Path (Join-Path $RepoRoot 'skills') -Directory | ForEach-Object {
     $target = Join-Path $VsCodeRoot "skills\$skillName.md"
     if (Test-Path $source) {
         Copy-Item $source $target -Force | Out-Null
-        Write-Host "✓ Copied skill: $skillName" -ForegroundColor Green
+        Write-Host "Copied skill: $skillName" -ForegroundColor Green
     }
 }
 
-Write-Host "`n✅ Installation completed successfully!" -ForegroundColor Green
+Write-Host "`nInstallation completed successfully!" -ForegroundColor Green
 Write-Host "Global Copilot Agentic Setup is now active at: $CopilotRoot" -ForegroundColor Cyan
 Write-Host "`nTipp: Für zukünftige Technologie-spezifische Konfigurationen (Java/Kotlin, Python, etc.)" -ForegroundColor Yellow
-Write-Host "     kannst du `install.ps1 --config <kotlin|python>` verwenden."
+Write-Host "     kannst du install.ps1 --config <kotlin|python> verwenden."

@@ -5,11 +5,12 @@
       "label": "Swarm: Start Coordinator (Light)",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "auto", "@swarm-coordinator"],
+      "args": ["--model", "auto", "--agent", "swarm-coordinator"],
+      "group": "test",
       "presentation": {
         "echo": true,
         "reveal": "always",
-        "focus": true,
+        "focus": false,
         "panel": "new"
       }
     },
@@ -22,7 +23,7 @@
       "presentation": {
         "echo": true,
         "reveal": "always",
-        "focus": true,
+        "focus": false,
         "panel": "new"
       },
       "problemMatcher": []
@@ -80,6 +81,23 @@
       }
     },
     {
+      "label": "Swarm: Start All Agents (Light)",
+      "dependsOn": [
+        "Swarm: Start Coordinator (Light)",
+        "Swarm: Start TDD Coordinator",
+        "Swarm: Start Property Test Generator",
+        "Swarm: Start Quality Guardian",
+        "Swarm: Start Git Orchestrator"
+      ],
+      "dependsOrder": "parallel",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      }
+    },
+    {
       "label": "Swarm: Run All Quality Gates",
       "type": "shell",
       "command": "./gradlew",
@@ -92,6 +110,18 @@
       }
     },
     {
+      "label": "Swarm: Sync VS Code Agent/Skill Docs",
+      "type": "shell",
+      "command": "powershell",
+      "args": ["-ExecutionPolicy", "Bypass", "-NoProfile", "-File", "scripts/sync-vscode-docs.ps1"],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+      }
+    },
+    {
       "label": "Swarm: Start Coordinator (Sonnet - teuer)",
       "type": "shell",
       "command": "copilot",
@@ -100,7 +130,7 @@
       "presentation": {
         "echo": true,
         "reveal": "always",
-        "focus": true,
+        "focus": false,
         "panel": "new"
       }
     }

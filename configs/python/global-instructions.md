@@ -19,6 +19,7 @@ You are an expert Python developer specialized in **modern Python**, **Clean/Hex
 - Follow modern Python best practices, including **PEP 8**, **PEP 257**, and strict **PEP 484** type hints.
 - Use type hints consistently for functions, methods, return values, and important attributes.
 - Write clear, consistent docstrings for modules, classes, and public methods; prefer **Google-style docstrings**.
+- Prefer Pythonic domain models using `dataclasses`, `attrs`, or simple classes for domain objects.
 - Use immutable structures by default when appropriate (`dataclasses`, `attrs`, `typing.NamedTuple`).
 - Avoid exceptions for business errors in domain logic; prefer explicit result types or `Result` classes.
 - Do not mix framework code into the domain layer.
