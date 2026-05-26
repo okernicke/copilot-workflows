@@ -57,6 +57,12 @@
 - You can also run the task `Swarm: Sync VS Code Agent/Skill Docs` from VS Code.
 - Do not edit `.vscode/agents/` or `.vscode/skills/` directly.
 
+### External terminal swarm launch
+- `scripts/run-swarm.ps1` launches the swarm in external PowerShell terminals using Windows Terminal when available.
+- `scripts/run-swarm.sh` launches the swarm in a `tmux` session on Linux.
+- Communication is not via terminal pipes; each agent runs in its own shell session and coordination happens through the workspace/user workflow.
+- Use `Swarm: Launch External PowerShell Terminals` to start the swarm from VS Code if you want an external terminal layout.
+
 ## Recommended terminal layout
 
 - Terminal 1: Swarm Coordinator
