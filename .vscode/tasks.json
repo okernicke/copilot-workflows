@@ -2,10 +2,22 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Swarm: Start Coordinator (Light)",
+      "type": "shell",
+      "command": "copilot",
+      "args": ["--model", "auto", "@swarm-coordinator"],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+      }
+    },
+    {
       "label": "Swarm: Start Coordinator",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "claude-haiku-4.5", "--agent", "swarm-coordinator"],
+      "args": ["--model", "auto", "--agent", "swarm-coordinator"],
       "group": "test",
       "presentation": {
         "echo": true,
@@ -19,7 +31,7 @@
       "label": "Swarm: Start TDD Coordinator",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "claude-haiku-4.5", "--agent", "tdd-coordinator"],
+      "args": ["--model", "auto", "--agent", "tdd-coordinator"],
       "group": "test",
       "presentation": {
         "echo": true,
@@ -32,7 +44,7 @@
       "label": "Swarm: Start Property Test Generator",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "claude-haiku-4.5", "--agent", "property-test-generator"],
+      "args": ["--model", "auto", "--agent", "property-test-generator"],
       "group": "test",
       "presentation": {
         "echo": true,
@@ -45,7 +57,7 @@
       "label": "Swarm: Start Quality Guardian",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "claude-haiku-4.5", "--agent", "crap-analyzer"],
+      "args": ["--model", "auto", "--agent", "crap-analyzer"],
       "group": "test",
       "presentation": {
         "echo": true,
@@ -58,7 +70,7 @@
       "label": "Swarm: Start Git Orchestrator",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "claude-haiku-4.5", "--agent", "git-orchestrator"],
+      "args": ["--model", "auto", "--agent", "git-orchestrator"],
       "group": "test",
       "presentation": {
         "echo": true,

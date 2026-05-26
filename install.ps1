@@ -112,6 +112,29 @@ foreach ($file in $configFiles) {
 
 Write-Host "`n⚙️  VS Code Swarm configuration is ready (copied via project setup)" -ForegroundColor Cyan
 
+Write-Host "`n📂 Setting up workspace-level VS Code agents and skills..." -ForegroundColor Cyan
+
+$VsCodeRoot = Join-Path $RepoRoot ".vscode"
+New-Item -ItemType Directory -Path "$VsCodeRoot\agents" -Force | Out-Null
+New-Item -ItemType Directory -Path "$VsCodeRoot\skills" -Force | Out-Null
+
+# Copy agent files to workspace
+Get-ChildItem -Path (Join-Path $RepoRoot 'agents') -Filter '*.agent.md' | ForEach-Object {
+    Copy-Item $_.FullName (Join-Path $VsCodeRoot "agents\$($_.Name)") -Force | Out-Null
+    Write-Host "✓ Copied agent: $($_.Name)" -ForegroundColor Green
+}
+
+# Copy skill files to workspace
+Get-ChildItem -Path (Join-Path $RepoRoot 'skills') -Directory | ForEach-Object {
+    $skillName = $_.Name
+    $source = Join-Path $_.FullName "SKILL.md"
+    $target = Join-Path $VsCodeRoot "skills\$skillName.md"
+    if (Test-Path $source) {
+        Copy-Item $source $target -Force | Out-Null
+        Write-Host "✓ Copied skill: $skillName" -ForegroundColor Green
+    }
+}
+
 Write-Host "`n✅ Installation completed successfully!" -ForegroundColor Green
 Write-Host "Global Copilot Agentic Setup is now active at: $CopilotRoot" -ForegroundColor Cyan
 Write-Host "`nTipp: Für zukünftige Technologie-spezifische Konfigurationen (Java/Kotlin, Python, etc.)" -ForegroundColor Yellow

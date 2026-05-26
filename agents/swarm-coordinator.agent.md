@@ -1,6 +1,4 @@
-﻿# swarm-coordinator.agent.md
-
----
+﻿---
 name: swarm-coordinator
 description: Master orchestrator for parallel agent swarms (VS Code optimized). Coordinates specialized agents for maximum quality and efficiency.
 ---
