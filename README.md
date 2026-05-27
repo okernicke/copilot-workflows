@@ -10,7 +10,7 @@ Provide a fully agent-orchestrated development workflow with strong quality cont
 
 ## Features
 
-- **Swarm-first**: Parallel agent execution via VS Code multi-terminal layouts
+- **Swarm-first**: Parallel agent execution via VS Code multi-terminal layouts or WezTerm-based startup
 - **Clean Architecture + DDD**
 - **Automated Git orchestration** (branching, atomic commits, squash, PR preparation)
 - **Cost-aware**: default model is Claude Haiku 4.5
@@ -25,23 +25,22 @@ Provide a fully agent-orchestrated development workflow with strong quality cont
 
 ## Quick start
 
-1. Open your project in VS Code.
-2. Press `Ctrl + Shift + P` → **Tasks: Run Task**.
-3. Start `Swarm: Start Coordinator` or `Swarm: Start Coordinator (Sonnet - expensive)`.
-
-Use the installer with a config parameter for language-specific setup:
+1. Choose your terminal mode.
+2. VS Code mode: open your project in VS Code, press `Ctrl + Shift + P` → **Tasks: Run Task**, then choose a `Swarm: ...` task.
+3. WezTerm mode: run `./wezterm/wezterm-start.ps1 -WorkingDirectory "<project-path>"`.
+4. Use the installer:
 
 ```powershell
-.\scripts\install.ps1 --config kotlin
-.\scripts\install.ps1 --config python
+.\scripts\install.ps1
 ```
 
 See [`vscode-swarm-setup.md`](vscode-swarm-setup.md) for terminal layout and setup tips.
+See [`wezterm/README.md`](wezterm/README.md) for WezTerm setup and startup flow.
 
 ## Config package guide
 
 - Supported config packages are defined in `configs/configs.json`.
-- Use `scripts/install.ps1 --config <name>` to install the shared workflow plus a language-specific profile.
+- Use `scripts/install.ps1` to install the shared workflow and link all supported language profiles.
 - A valid config package must include:
   - `global-instructions.md`
   - `MEMORY.md`
@@ -51,7 +50,7 @@ See [`vscode-swarm-setup.md`](vscode-swarm-setup.md) for terminal layout and set
 
 ## Example workflow
 
-1. Choose a config: `.\scripts\install.ps1 --config python` or `.\scripts\install.ps1 --config kotlin`.
+1. Run installer once: `.\scripts\install.ps1`.
 2. Start the swarm coordinator in VS Code.
 3. Run `concept-generator` and `acceptance-test-writer`.
 4. Implement the feature with `tdd-coordinator`, `property-test-generator`, and quality gates.
@@ -65,6 +64,55 @@ See [`vscode-swarm-setup.md`](vscode-swarm-setup.md) for terminal layout and set
 4. **Swarm implementation** → `@swarm-coordinator`
 5. Quality gates + merge
 
+## Complete workflow (detailed)
+
+### Phase 0: Preparation
+
+- Create the user story or feature briefing.
+
+### Phase 1: Concept creation
+
+- Agent: `concept-generator`
+- Output: project-specific concept document
+- Human step: review, clarify open questions, approve
+
+### Phase 2: Acceptance tests (Gherkin)
+
+- Agent: `acceptance-test-writer`
+- Output: Gherkin feature file
+- Human step: review and approve acceptance tests
+
+### Phase 3: Implementation (Swarm mode)
+
+The `swarm-coordinator` orchestrates parallel roles:
+
+- Main coder: `tdd-coordinator`
+- Property tester: `property-test-generator`
+- Quality guardian: `crap-analyzer`
+- Git orchestrator: `git-orchestrator`
+- Architecture guard: `architectural-reviewer`
+- Final reviewer: `code-review-tdd`
+
+Typical sequence:
+
+1. Run `tdd-red` + `property-test-generator` in parallel.
+2. Continue with `tdd-green`.
+3. Refactor with `tdd-refactor`.
+4. Execute quality gates.
+5. Prepare merge with `git-orchestrator`.
+
+### Phase 4: Completion
+
+- Final human review
+- Merge into `main`
+- Run `documentation-updater` for docs refresh
+
+## Git workflow
+
+- Branch names: `feature/xyz` or `story/xyz`
+- Commit prefixes: `red:`, `green:`, `refactor:`, `test:`, `chore:`, `docs:`
+- `git-orchestrator` keeps commit hygiene and PR prep
+
 ## Skill inventory
 
 Shared workflow skills are maintained in `skills/`.
@@ -74,7 +122,6 @@ For the complete, current list and descriptions (including utility skills like `
 
 | File | Purpose |
 |------|---------|
-| [`Agentic-Coding-Workflow-v0.6.md`](Agentic-Coding-Workflow-v0.6.md) | Overall concept and workflow details |
 | [`AGENTS.md`](AGENTS.md) | Overview of agents and skills |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Guidelines for config packages and contributions |
 | [`vscode-swarm-setup.md`](vscode-swarm-setup.md) | VS Code swarm layout and terminal guide |

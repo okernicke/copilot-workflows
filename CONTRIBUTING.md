@@ -66,7 +66,7 @@ If you want a starting point, copy `configs/template/` and use it as the new con
 If you add a new workflow step or shared skill, update:
 
 - `AGENTS.md`
-- `Agentic-Coding-Workflow-v0.6.md`
+- `README.md`
 - `README.md` if the user-facing installation or workflow guidance changes
 
 ## Notes

@@ -5,7 +5,7 @@
 
 [CmdletBinding()]
 param(
-    [string]$Config = "kotlin"
+    [string]$Config = ""
 )
 
 Set-StrictMode -Version Latest
@@ -22,20 +22,6 @@ if (-not (Test-Path -LiteralPath $ConfigManifestPath -PathType Leaf)) {
 
 $configManifest = Get-Content -LiteralPath $ConfigManifestPath -Raw | ConvertFrom-Json
 $knownConfigs = @($configManifest | ForEach-Object { $_.name })
-
-if ($Config -notin $knownConfigs) {
-    Write-Host "Unknown config: $Config" -ForegroundColor Red
-    Write-Host "Available configs:" -ForegroundColor Yellow
-    foreach ($name in $knownConfigs) {
-        Write-Host "  - $name"
-    }
-    exit 1
-}
-
-$ConfigRoot = Join-Path $RepoRoot ("configs\" + $Config)
-if (-not (Test-Path -LiteralPath $ConfigRoot -PathType Container)) {
-    throw "Config directory missing: $ConfigRoot"
-}
 
 function Ensure-Directory {
     param([string]$Path)
@@ -79,7 +65,6 @@ function New-LinkOrCopy {
 
 Write-Host "Installing Agentic Coding Workflow Setup..." -ForegroundColor Cyan
 Write-Host "Target: $CopilotRoot" -ForegroundColor Gray
-Write-Host "Selected config: $Config" -ForegroundColor Gray
 
 Ensure-Directory -Path (Join-Path $CopilotRoot "skills")
 Ensure-Directory -Path (Join-Path $CopilotRoot "agents")
@@ -154,4 +139,4 @@ if (Test-Path -LiteralPath $syncScript -PathType Leaf) {
 Write-Host ""
 Write-Host "Installation completed." -ForegroundColor Green
 Write-Host "Copilot workflow root: $CopilotRoot" -ForegroundColor Cyan
-Write-Host "Use: .\scripts\install.ps1 --config <kotlin|python>" -ForegroundColor Yellow
+Write-Host "Use: .\scripts\install.ps1" -ForegroundColor Yellow

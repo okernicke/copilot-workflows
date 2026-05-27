@@ -20,11 +20,11 @@ wezterm.on('gui-startup', function(cmd)
   local middle_bottom = middle:split { direction = "Bottom", size = 0.5 }
   local right_bottom = right:split { direction = "Bottom", size = 0.5 }
 
-  left:send_text("copilot --model auto --agent swarm-coordinator\n\r")
-  middle:send_text("copilot --model auto --agent tdd-coordinator\n\r")
-  right:send_text("copilot --model auto --agent property-test-generator\n\r")
-  middle_bottom:send_text("copilot --model auto --agent crap-analyzer\n\r")
-  right_bottom:send_text("copilot --model auto --agent git-orchestrator\n\r")
+  left:send_text("copilot --model auto --agent swarm-coordinator --allow-all-tools\n\r")
+  middle:send_text("copilot --model auto --agent tdd-coordinator --allow-all-tools\n\r")
+  right:send_text("copilot --model auto --agent property-test-generator  --allow-all-tools\n\r")
+  middle_bottom:send_text("copilot --model auto --agent crap-analyzer  --allow-all-tools\n\r")
+  right_bottom:send_text("copilot --model auto --agent git-orchestrator  --allow-all-tools\n\r")
   
   local gui = window:gui_window()
 

@@ -9,12 +9,12 @@ This repository supports multiple language-specific configuration packages for t
 
 ## Usage
 
-Use `scripts/install.ps1 --config <name>` to install the shared workflow plus the selected language config into your Copilot setup.
+Use `scripts/install.ps1` to install the shared workflow and link all supported language configs into your Copilot setup.
 
 Example:
 
 ```powershell
-.\scripts\install.ps1 --config python
+.\scripts\install.ps1
 ```
 
 ## Package structure

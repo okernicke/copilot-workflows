@@ -18,7 +18,7 @@ Provide Kotlin/Spring Boot conventions, architecture guidance, and workflow inte
 ## Installation
 
 ```powershell
-.\scripts\install.ps1 --config kotlin
+.\scripts\install.ps1
 ```
 
 ## What is included
@@ -53,7 +53,7 @@ See [`vscode-swarm-setup.md`](../../vscode-swarm-setup.md) for terminal layout a
 
 | File | Purpose |
 |------|---------|
-| [`Agentic-Coding-Workflow-v0.6.md`](../../Agentic-Coding-Workflow-v0.6.md) | Concept and workflow reference |
+| [`README.md`](../../README.md) | Concept and workflow reference |
 | [`AGENTS.md`](AGENTS.md) | Kotlin config agent overview |
 | [`vscode-swarm-setup.md`](../../vscode-swarm-setup.md) | VS Code terminal layout guide |
 | [`.vscode/tasks.json`](../../.vscode/tasks.json) | Quick start tasks for agents |

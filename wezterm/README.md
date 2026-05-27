@@ -70,6 +70,17 @@ Launch WezTerm from Start menu or run:
 wezterm
 ```
 
+For project-aware startup (recommended), run the helper script from this repository:
+
+```powershell
+.\wezterm\wezterm-start.ps1 -WorkingDirectory "C:\path\to\your\project"
+```
+
+This does two things before launching WezTerm:
+
+1. Copies `copilot-instructions.md` into `.github/` of the target project.
+2. Starts WezTerm with `--cwd` set to the target project.
+
 On startup, this config will:
 
 1. Create 3 columns.
