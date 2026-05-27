@@ -2,7 +2,10 @@ local wezterm = require 'wezterm'
 local mux = wezterm.mux
 
 wezterm.on('gui-startup', function(cmd)
-  local tab, pane, window = mux.spawn_window(cmd or {})
+
+  local args = cmd or {}
+  local project_dir = args.cwd or "C:\\projekte\\copilot-workflows"
+  local tab, pane, window = mux.spawn_window({cwd = project_dir,})
 
   -- LEFT column (implicitly 1/3)
   local left = pane
@@ -22,9 +25,29 @@ wezterm.on('gui-startup', function(cmd)
   right:send_text("copilot --model auto --agent property-test-generator\n\r")
   middle_bottom:send_text("copilot --model auto --agent crap-analyzer\n\r")
   right_bottom:send_text("copilot --model auto --agent git-orchestrator\n\r")
+  
+  local gui = window:gui_window()
+
+  -- fixed size (width is your "dock width")
+  local width = 1920
+  local height = 1000
+
+  -- move to right side (adjust X for your screen)
+  local screen_width = 3840  -- adjust if needed
+  local x = screen_width - width
+  local y = 30
+
+  gui:set_inner_size(width, height)
+  gui:set_position(x, y)
+  
 end)
 
 return {
+  color_scheme = "GitHub Dark",
+  enable_tab_bar = false,
+  window_decorations = "RESIZE",
+  initial_cols = 120,
+  initial_rows = 40,
   font_size = 9.0,
   mouse_bindings = {
     {
