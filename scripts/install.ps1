@@ -104,8 +104,9 @@ foreach ($agent in $agentFiles) {
     Write-Host "Prepared agent: $agent" -ForegroundColor Green
 }
 
-Write-Host "Copying shared workflow files..." -ForegroundColor Cyan
-$globalFiles = @(
+Write-Host "Linking shared workflow files..." -ForegroundColor Cyan
+$sharedFiles = @(
+    @{ Source = "instructions\copilot-instructions.md"; Target = "copilot-instructions.md" },
     @{ Source = "MEMORY.md"; Target = "MEMORY.md" },
     @{ Source = "AGENTS.md"; Target = "AGENTS.md" },
     @{ Source = "README.md"; Target = "README.md" },
@@ -113,36 +114,36 @@ $globalFiles = @(
     @{ Source = "vscode-swarm-setup.md"; Target = "vscode-swarm-setup.md" }
 )
 
-foreach ($file in $globalFiles) {
+foreach ($file in $sharedFiles) {
     $source = Join-Path $RepoRoot $file.Source
     $target = Join-Path $CopilotRoot $file.Target
-    Remove-IfExists -Path $target
-    if (Test-Path -LiteralPath $source) {
-        Copy-Item -LiteralPath $source -Destination $target -Force
-        Write-Host "Copied: $($file.Target)" -ForegroundColor Green
-    } else {
-        Write-Host "Missing shared file: $($file.Source)" -ForegroundColor Yellow
-    }
+    New-LinkOrCopy -Source $source -Target $target
+    Write-Host "Prepared shared file: $($file.Target)" -ForegroundColor Green
 }
 
-Write-Host "Copying config-specific files..." -ForegroundColor Cyan
-$configFiles = @(
-    @{ Source = "configs\$Config\global-instructions.md"; Target = "global-instructions.md" },
-    @{ Source = "configs\$Config\MEMORY.md"; Target = "MEMORY.md" },
-    @{ Source = "configs\$Config\README.md"; Target = "config-README-$Config.md" }
-)
+Write-Host "Linking config package assets for all supported configs..." -ForegroundColor Cyan
+foreach ($configName in $knownConfigs) {
+    $configSourceRoot = Join-Path $RepoRoot ("configs\" + $configName)
+    $configTargetRoot = Join-Path $CopilotRoot ("swarm-configs\" + $configName)
+    Ensure-Directory -Path $configTargetRoot
 
-foreach ($file in $configFiles) {
-    $source = Join-Path $RepoRoot $file.Source
-    $target = Join-Path $CopilotRoot $file.Target
-    Remove-IfExists -Path $target
-    if (Test-Path -LiteralPath $source) {
-        Copy-Item -LiteralPath $source -Destination $target -Force
-        Write-Host "Copied config file: $($file.Target)" -ForegroundColor Green
-    } else {
-        Write-Host "Missing config file: $($file.Source)" -ForegroundColor Yellow
+    $configAssetMap = @(
+        @{ Source = (Join-Path $configSourceRoot "copilot-instructions.md"); Target = (Join-Path $configTargetRoot "copilot-instructions.md"); Directory = $false },
+        @{ Source = (Join-Path $configSourceRoot "MEMORY.md"); Target = (Join-Path $configTargetRoot "MEMORY.md"); Directory = $false },
+        @{ Source = (Join-Path $configSourceRoot "README.md"); Target = (Join-Path $configTargetRoot "README.md"); Directory = $false }
+    )
+
+    foreach ($asset in $configAssetMap) {
+        if ($asset.Directory) {
+            New-LinkOrCopy -Source $asset.Source -Target $asset.Target -Directory
+        } else {
+            New-LinkOrCopy -Source $asset.Source -Target $asset.Target
+        }
     }
+
+    Write-Host "Prepared config profile: $configName" -ForegroundColor Green
 }
+
 
 $syncScript = Join-Path $RepoRoot "scripts\sync-vscode-docs.ps1"
 if (Test-Path -LiteralPath $syncScript -PathType Leaf) {

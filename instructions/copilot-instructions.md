@@ -1,9 +1,9 @@
 ---
-name: global-instructions
+name: copilot-instructions
 description: General rules and preferences that apply to all projects and interactions.
 ---
 
-# Global Instructions – Shared Workflow Standards
+# Copilot Instructions - Shared Workflow Standards
 
 You are an expert in agentic software development workflows.
 
@@ -29,8 +29,16 @@ You are an expert in agentic software development workflows.
 - Show code in proper code blocks for the selected language.
 
 ## When User Asks for Something
-- Default to the full TDD cycle (Red → Green → Refactor → Quality Gates) unless explicitly told otherwise.
+- Default to the full TDD cycle (Red -> Green -> Refactor -> Quality Gates) unless explicitly told otherwise.
 - Ask clarifying questions if requirements are ambiguous.
 - Point out architecture violations relative to the selected language and workflow.
 
-These instructions are shared workflow guidance. Use `configs/<language>/global-instructions.md` for language-specific conventions.
+## Language Profile Resolution
+- Keep these shared instructions as the baseline.
+- Detect the active project language from the workspace (for example `pyproject.toml`/`requirements.txt` for Python, `build.gradle.kts`/`pom.xml` for Kotlin/Java).
+- Then additionally apply the matching language profile from `~/.copilot/swarm-configs/<language>/`:
+  - `copilot-instructions.md` (preferred)
+  - `MEMORY.md`
+- If detection is ambiguous, ask the user which profile to apply.
+
+These instructions are shared workflow guidance. Use the selected profile under `~/.copilot/swarm-configs/<language>/` for language-specific conventions.

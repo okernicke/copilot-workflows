@@ -43,7 +43,7 @@ copilot-workflows/
 │   ├── swarm-coordinator.agent.md
 │   └── tdd-coordinator.agent.md
 ├── instructions/
-│   └── global-instructions.md
+│   └── copilot-instructions.md
 ├── scripts/
 │   ├── install.ps1
 │   └── sync-vscode-docs.ps1
