@@ -1,0 +1,1 @@
+wezterm start --cwd "C:\projekte\kotlin\skills-katalog-backend"
