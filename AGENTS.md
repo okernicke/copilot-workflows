@@ -13,6 +13,18 @@ This repository contains a generic agentic workflow setup for high-quality, test
 - **Purpose**: Executes the traditional TDD cycle: Red → Green → Refactor → Quality Gates.
 - **Best for**: Smaller changes or when a full swarm is not required.
 
+### `quality-guardian`
+- **Purpose**: Coordinates the quality-gate lane across CRAP, coverage, mutation, and maintainability checks.
+- **Best for**: Running the quality gate slice during or after implementation.
+
+### `architectural-reviewer`
+- **Purpose**: Reviews architecture boundaries, dependency direction, and design integrity.
+- **Best for**: Architecture-focused quality checks.
+
+### `code-review-tdd`
+- **Purpose**: Performs the final implementation and TDD-oriented review.
+- **Best for**: Final review before completion or merge.
+
 ## Specialized Skills
 
 | Skill                        | Purpose                                              | Used by                    |
@@ -46,7 +58,7 @@ This repository contains a generic agentic workflow setup for high-quality, test
 4. **Swarm implementation**:
    - `tdd-coordinator` + `property-test-generator` in parallel
    - `git-orchestrator` for version control and commit hygiene
-   - Quality Gates (`crap-analyzer`, `architectural-reviewer`, `mutation-testing`, `coverage-check`)
+   - Quality Gates (`quality-guardian`, `architectural-reviewer`, `code-review-tdd`)
 5. **Final review & merge**
 
 ## VS Code integration

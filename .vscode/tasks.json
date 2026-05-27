@@ -58,7 +58,33 @@
       "label": "Swarm: Start Quality Guardian",
       "type": "shell",
       "command": "copilot",
-      "args": ["--model", "auto", "--agent", "crap-analyzer"],
+      "args": ["--model", "auto", "--agent", "quality-guardian"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Swarm: Start Architecture Reviewer",
+      "type": "shell",
+      "command": "copilot",
+      "args": ["--model", "auto", "--agent", "architectural-reviewer"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Swarm: Start TDD Review",
+      "type": "shell",
+      "command": "copilot",
+      "args": ["--model", "auto", "--agent", "code-review-tdd"],
       "group": "test",
       "presentation": {
         "echo": true,

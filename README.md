@@ -2,6 +2,8 @@
 
 A reusable workflow setup for agentic development with strong quality gates, clear role separation, and practical local tooling.
 
+![Screenshot](docs/images/wezterm.png)
+
 ## Purpose
 
 This repository gives you a ready-to-run Copilot workflow so you do not have to rebuild prompts, roles, and setup scripts in every project.
@@ -98,6 +100,7 @@ If symlink creation is not possible on your machine, the installer falls back to
 ### Phase 1: Concept creation
 
 - Agent: `concept-generator`
+- Refinement and challenge tools: `grill-me`, `grill-with-docs`
 - Output: project-specific concept document
 - Human step: review, clarify open questions, approve
 
@@ -111,9 +114,9 @@ If symlink creation is not possible on your machine, the installer falls back to
 
 The `swarm-coordinator` orchestrates parallel roles:
 
-- Main coder: `tdd-coordinator`
+- Main coder: `tdd-coordinator` (`tdd-red`, `tdd-green`, `tdd-refactor`)
 - Property tester: `property-test-generator`
-- Quality guardian: `crap-analyzer`
+- Quality guardian: `quality-guardian` (`crap-analyzer`, `coverage-check`, `mutation-testing`)
 - Git orchestrator: `git-orchestrator`
 - Architecture guard: `architectural-reviewer`
 - Final reviewer: `code-review-tdd`

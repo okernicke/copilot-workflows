@@ -28,7 +28,13 @@
   - Starts the `property-test-generator` agent via `copilot --model auto --agent property-test-generator`.
 
 - `Swarm: Start Quality Guardian`
-  - Starts the `crap-analyzer` agent via `copilot --model auto --agent crap-analyzer`.
+  - Starts the `quality-guardian` agent via `copilot --model auto --agent quality-guardian`.
+
+- `Swarm: Start Architecture Reviewer`
+  - Starts the `architectural-reviewer` agent via `copilot --model auto --agent architectural-reviewer`.
+
+- `Swarm: Start TDD Review`
+  - Starts the `code-review-tdd` agent via `copilot --model auto --agent code-review-tdd`.
 
 - `Swarm: Start Git Orchestrator`
   - Starts the `git-orchestrator` agent via `copilot --model auto --agent git-orchestrator`.
@@ -68,7 +74,8 @@
 - Terminal 1: Swarm Coordinator
 - Terminal 2: TDD Coordinator
 - Terminal 3: Property Test Generator
-- Terminal 4: Quality + Git Orchestrator
+- Terminal 4: Quality Guardian
+- Terminal 5: Git Orchestrator
 
 **Cost strategy**:
 - Default `--model auto` tasks are the least expensive option.

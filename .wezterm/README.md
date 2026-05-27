@@ -5,7 +5,7 @@ This folder contains a WezTerm config that opens a 5-pane layout and starts the 
 - swarm-coordinator
 - tdd-coordinator
 - property-test-generator
-- crap-analyzer
+- quality-guardian
 - git-orchestrator
 
 ## 1) Install WezTerm (Windows)

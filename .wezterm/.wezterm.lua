@@ -23,7 +23,7 @@ wezterm.on('gui-startup', function(cmd)
   left:send_text("copilot --model auto --agent swarm-coordinator --allow-all-tools\n\r")
   middle:send_text("copilot --model auto --agent tdd-coordinator --allow-all-tools\n\r")
   right:send_text("copilot --model auto --agent property-test-generator  --allow-all-tools\n\r")
-  middle_bottom:send_text("copilot --model auto --agent crap-analyzer  --allow-all-tools\n\r")
+  middle_bottom:send_text("copilot --model auto --agent quality-guardian  --allow-all-tools\n\r")
   right_bottom:send_text("copilot --model auto --agent git-orchestrator  --allow-all-tools\n\r")
   
   local gui = window:gui_window()
