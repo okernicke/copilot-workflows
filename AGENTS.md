@@ -53,7 +53,7 @@ This repository contains a generic agentic workflow setup for high-quality, test
 
 - `.vscode/tasks.json` launches the main agents quickly
 - Recommended multi-terminal layout for swarm workflows
-- Default model: `claude-haiku-4.5`
+- Default model: `auto`
 
 ## Configuration
 
