@@ -11,6 +11,7 @@ if (-not (Test-Path -LiteralPath $linkScript -PathType Leaf)) {
 	throw "Missing link helper: $linkScript"
 }
 
+# TODO parameterize project root
 & $linkScript -ProjectRoot "C:\projekte\kotlin\skills-katalog-backend"
 
 Test-Path .\.github\copilot-instructions.md

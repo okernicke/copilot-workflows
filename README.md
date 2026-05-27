@@ -1,21 +1,34 @@
 ﻿# Copilot Workflows
 
-A generic, multi-language agentic workflow repository for high-quality development.
+A reusable workflow setup for agentic development with strong quality gates, clear role separation, and practical local tooling.
 
-This repo supports multiple language-specific workflow profiles under `configs/`, currently including `kotlin` and `python`.
+## Purpose
 
-## Goal
+This repository gives you a ready-to-run Copilot workflow so you do not have to rebuild prompts, roles, and setup scripts in every project.
 
-Provide a fully agent-orchestrated development workflow with strong quality controls and clear conventions.
+It is built for teams or individuals who want:
 
-## Features
+- Parallel implementation with specialized agents
+- Consistent quality gates and review flow
+- Reproducible setup across different codebases
+- A single place to evolve prompts, instructions, and process
 
-- **Swarm-first**: Parallel agent execution via VS Code multi-terminal layouts or WezTerm-based startup
-- **Clean Architecture + DDD**
-- **Automated Git orchestration** (branching, atomic commits, squash, PR preparation)
-- **Cost-aware**: default model is Claude Haiku 4.5
-- **Project-independent setup** via symlinks into `~/.copilot/`
-- **Human checkpoints** only for concept review, acceptance test review, and final approval
+## Configurability
+
+The workflow is configurable on multiple levels:
+
+- Runtime mode: VS Code task-driven swarm or WezTerm startup flow
+- Language profile: config packages under `configs/` (currently `kotlin` and `python`)
+- Agent/skill behavior: shared prompts in `agents/` and `skills/`
+- Instruction layers: shared `copilot-instructions.md` plus language-specific profile files
+- Model strategy: cost-aware defaults with optional stronger coordinator runs
+
+## Core characteristics
+
+- Swarm-first orchestration with explicit agent responsibilities
+- Clean Architecture and DDD-oriented guidance
+- Automated git hygiene via `git-orchestrator`
+- Human checkpoints only where they add the most value
 
 ## Installation
 
@@ -23,19 +36,31 @@ Provide a fully agent-orchestrated development workflow with strong quality cont
 .\scripts\install.ps1
 ```
 
+### What `install.ps1` does
+
+The installer prepares your global Copilot workspace under `%USERPROFILE%\.copilot`.
+
+It will:
+
+- Create base folders: `skills/`, `agents/`, `context/`, and `swarm-configs/`.
+- Link all shared skills from this repo into `%USERPROFILE%\.copilot\skills\*`.
+- Link all shared agent prompts into `%USERPROFILE%\.copilot\agents\*`.
+- Link shared root docs into `%USERPROFILE%\.copilot`:
+  - `copilot-instructions.md`
+  - `MEMORY.md`
+  - `AGENTS.md`
+  - `README.md`
+- Link all supported config profiles from `configs/configs.json` into `%USERPROFILE%\.copilot\swarm-configs\<config>\`.
+- Sync root `agents/` and `skills/` into `.vscode/agents/` and `.vscode/skills/` via `scripts/sync-vscode-docs.ps1`.
+
+If symlink creation is not possible on your machine, the installer falls back to copying files/directories.
+
 ## Quick start
 
-1. Choose your terminal mode.
-2. VS Code mode: open your project in VS Code, press `Ctrl + Shift + P` → **Tasks: Run Task**, then choose a `Swarm: ...` task.
-3. WezTerm mode: run `./.wezterm/wezterm-start.ps1 -WorkingDirectory "<project-path>"`.
-4. Use the installer:
+1. Choose your terminal mode. 
+2. VS Code mode [`.vscode/README.md`](.vscode/README.md): open your project in VS Code, press `Ctrl + Shift + P` → **Tasks: Run Task**, then choose a `Swarm: ...` task.
+3. WezTerm mode [`.wezterm/README.md`](.wezterm/README.md): run `./.wezterm/wezterm-start.ps1 -WorkingDirectory "<project-path>"`.
 
-```powershell
-.\scripts\install.ps1
-```
-
-See [`.vscode/README.md`](.vscode/README.md) for terminal layout and setup tips.
-See [`.wezterm/README.md`](.wezterm/README.md) for WezTerm setup and startup flow.
 
 ## Config package guide
 
@@ -139,7 +164,6 @@ Maximize quality while minimizing manual routine work by using intelligent, spec
 **Next steps**
 
 - Run a real feature through the workflow.
-- Expand language-specific configuration packages.
-- Keep `AGENTS.md` and workflow docs in sync when adding shared skills.
+- Add a tmux (linux) runtime mode.
 
 ---

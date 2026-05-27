@@ -38,7 +38,7 @@ This repository contains a generic agentic workflow setup for high-quality, test
 | `mutation-testing`          | Executes mutation testing                             | Quality Gates              |
 | `code-review-tdd`           | Performs the final TDD-style code review             | Final gate                 |
 
-## Workflow (v0.6)
+## Workflow
 
 1. **Concept** → `concept-generator`
 2. **Gherkin Acceptance Tests** → `acceptance-test-writer`
@@ -55,12 +55,10 @@ This repository contains a generic agentic workflow setup for high-quality, test
 - Recommended multi-terminal layout for swarm workflows
 - Default model: `auto`
 
-## Configuration
+## WezTerm integration
 
-This repository supports multiple config packages under `configs/`, such as `configs/kotlin/` and `configs/python/`.
+- `./.wezterm/wezterm-start.ps1` starts WezTerm with a project working directory
+- Pre-start helper copies `copilot-instructions.md` into the target project's `.github/`
+- `./.wezterm/.wezterm.lua` defines the multi-pane swarm startup layout
 
-## Installation
 
-```powershell
-.\scripts\install.ps1
-```
