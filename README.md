@@ -42,6 +42,8 @@ The workflow is configurable on multiple levels:
 
 The installer prepares your global Copilot workspace under `%USERPROFILE%\.copilot`.
 
+This keeps Copilot workflow assets out of individual project repositories, so you do not need to check in agent/skill docs and instructions into each repo.
+
 It will:
 
 - Create base folders: `skills/`, `agents/`, `context/`, and `swarm-configs/`.

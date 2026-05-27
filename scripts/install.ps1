@@ -94,9 +94,7 @@ $sharedFiles = @(
     @{ Source = "instructions\copilot-instructions.md"; Target = "copilot-instructions.md" },
     @{ Source = "MEMORY.md"; Target = "MEMORY.md" },
     @{ Source = "AGENTS.md"; Target = "AGENTS.md" },
-    @{ Source = "README.md"; Target = "README.md" },
-    @{ Source = "Agentic-Coding-Workflow-v0.6.md"; Target = "Agentic-Coding-Workflow-v0.6.md" },
-    @{ Source = "vscode-swarm-setup.md"; Target = "vscode-swarm-setup.md" }
+    @{ Source = "README.md"; Target = "README.md" }
 )
 
 foreach ($file in $sharedFiles) {
