@@ -39,7 +39,7 @@ For config package requirements and manifest conventions, see `../README.md` and
 2. Press `Ctrl + Shift + P` → **Tasks: Run Task**.
 3. Start `Swarm: Start Coordinator` or `Swarm: Start Coordinator (Sonnet - expensive)`.
 
-See [`vscode-swarm-setup.md`](vscode-swarm-setup.md) for terminal layout and setup tips.
+See [`vscode-swarm-setup.md`](../../vscode-swarm-setup.md) for terminal layout and setup tips.
 
 ## Workflow (v0.6)
 
@@ -53,11 +53,11 @@ See [`vscode-swarm-setup.md`](vscode-swarm-setup.md) for terminal layout and set
 
 | File | Purpose |
 |------|---------|
-| [`Agentic-Coding-Workflow-v0.6.md`](Agentic-Coding-Workflow-v0.6.md) | Concept and workflow reference |
+| [`Agentic-Coding-Workflow-v0.6.md`](../../Agentic-Coding-Workflow-v0.6.md) | Concept and workflow reference |
 | [`AGENTS.md`](AGENTS.md) | Kotlin config agent overview |
-| [`vscode-swarm-setup.md`](vscode-swarm-setup.md) | VS Code terminal layout guide |
-| [`.vscode/tasks.json`](.vscode/tasks.json) | Quick start tasks for agents |
-| `install.ps1` | Symlink-based setup |
+| [`vscode-swarm-setup.md`](../../vscode-swarm-setup.md) | VS Code terminal layout guide |
+| [`.vscode/tasks.json`](../../.vscode/tasks.json) | Quick start tasks for agents |
+| [`install.ps1`](../../install.ps1) | Symlink-based setup |
 
 ## Philosophy
 

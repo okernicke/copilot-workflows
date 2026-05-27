@@ -76,5 +76,5 @@
 
 ---
 
-**Status**: v0.5 – cost optimization integrated
+**Status**: v0.6 – cost optimization integrated
 

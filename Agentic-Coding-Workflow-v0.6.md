@@ -1,4 +1,4 @@
-# Agentic Coding Workflow – My Future Development Setup (v0.6)
+# Agentic Coding Workflow (v0.6)
 
 **Goal**: A fully agentic, highly automated development workflow with strong quality controls, inspired by Uncle Bob’s swarm-style practices.
 **Status**: Mature concept updated for generic workflow and language-specific config packages.
@@ -25,8 +25,7 @@ my-copilot-workflows/
 │   ├── python/
 │   │   ├── global-instructions.md
 │   │   ├── MEMORY.md
-│   │   ├── README.md
-│   │   └── AGENTS.md
+│   │   └── README.md
 │   ├── template/
 │   │   ├── global-instructions.md
 │   │   ├── MEMORY.md
@@ -123,9 +122,15 @@ The `swarm-coordinator` orchestrates parallel agents:
 **Specialized skills**:
 - `concept-generator`
 - `acceptance-test-writer`
+- `tdd-coordinator`
 - `property-test-generator`
 - `crap-analyzer`
 - `git-orchestrator`
+- `documentation-updater`
+- `grill-with-docs`, `grill-me`
+- `review`, `handoff`
+- `caveman`
+- `zoom-out`
 - `architectural-reviewer`
 - `tdd-red`, `tdd-green`, `tdd-refactor`
 - `coverage-check`, `mutation-testing`, `code-review-tdd`
@@ -145,6 +150,4 @@ The `swarm-coordinator` orchestrates parallel agents:
 
 **Next steps**
 
-1. Expand the Python config package.
-2. Consider a shared `configs/common/` package if needed.
-3. Add more workflow skills such as `documentation-updater` and `schema-checker`.
+

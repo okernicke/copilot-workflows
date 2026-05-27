@@ -65,6 +65,11 @@ See [`vscode-swarm-setup.md`](vscode-swarm-setup.md) for terminal layout and set
 4. **Swarm implementation** → `@swarm-coordinator`
 5. Quality gates + merge
 
+## Skill inventory
+
+Shared workflow skills are maintained in `skills/`.
+For the complete, current list and descriptions (including utility skills like `review`, `handoff`, `grill-me`, and `caveman`), see [`AGENTS.md`](AGENTS.md).
+
 ## Important files
 
 | File | Purpose |
@@ -88,6 +93,6 @@ Maximize quality while minimizing manual routine work by using intelligent, spec
 
 - Run a real feature through the workflow.
 - Expand language-specific configuration packages.
-- Add more shared skills such as `documentation-updater`.
+- Keep `AGENTS.md` and workflow docs in sync when adding shared skills.
 
 ---
