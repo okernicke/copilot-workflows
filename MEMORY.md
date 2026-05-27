@@ -25,7 +25,7 @@
 ## Shared Workflow Notes
 - Root docs are generic and technology-agnostic.
 - Language-specific standards are defined in `configs/<language>/global-instructions.md`.
-- Install the selected config package using `install.ps1 --config <language>`.
+- Install the selected config package using `scripts/install.ps1 --config <language>`.
 
 ---
 

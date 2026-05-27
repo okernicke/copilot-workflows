@@ -20,7 +20,7 @@ Provide a fully agent-orchestrated development workflow with strong quality cont
 ## Installation
 
 ```powershell
-.\install.ps1
+.\scripts\install.ps1
 ```
 
 ## Quick start
@@ -32,8 +32,8 @@ Provide a fully agent-orchestrated development workflow with strong quality cont
 Use the installer with a config parameter for language-specific setup:
 
 ```powershell
-.\install.ps1 --config kotlin
-.\install.ps1 --config python
+.\scripts\install.ps1 --config kotlin
+.\scripts\install.ps1 --config python
 ```
 
 See [`vscode-swarm-setup.md`](vscode-swarm-setup.md) for terminal layout and setup tips.
@@ -41,7 +41,7 @@ See [`vscode-swarm-setup.md`](vscode-swarm-setup.md) for terminal layout and set
 ## Config package guide
 
 - Supported config packages are defined in `configs/configs.json`.
-- Use `install.ps1 --config <name>` to install the shared workflow plus a language-specific profile.
+- Use `scripts/install.ps1 --config <name>` to install the shared workflow plus a language-specific profile.
 - A valid config package must include:
   - `global-instructions.md`
   - `MEMORY.md`
@@ -51,7 +51,7 @@ See [`vscode-swarm-setup.md`](vscode-swarm-setup.md) for terminal layout and set
 
 ## Example workflow
 
-1. Choose a config: `.\install.ps1 --config python` or `.\install.ps1 --config kotlin`.
+1. Choose a config: `.\scripts\install.ps1 --config python` or `.\scripts\install.ps1 --config kotlin`.
 2. Start the swarm coordinator in VS Code.
 3. Run `concept-generator` and `acceptance-test-writer`.
 4. Implement the feature with `tdd-coordinator`, `property-test-generator`, and quality gates.
@@ -81,7 +81,7 @@ For the complete, current list and descriptions (including utility skills like `
 | [`.vscode/tasks.json`](.vscode/tasks.json) | Quick start tasks for all agents |
 | `skills/` | Shared workflow skill prompts |
 | `configs/` | Language-specific config packages and metadata |
-| `install.ps1` | Symlink-based setup installer |
+| `scripts/install.ps1` | Canonical symlink-based setup installer |
 
 ## Philosophy
 

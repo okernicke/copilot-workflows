@@ -58,5 +58,5 @@ This package contains the Kotlin-specific agent and skill documentation for the 
 ## Installation
 
 ```powershell
-.\install.ps1 --config kotlin
+.\scripts\install.ps1 --config kotlin
 ```

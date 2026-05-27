@@ -15,13 +15,19 @@
 ## 2. Repository Structure
 
 ```bash
-my-copilot-workflows/
+copilot-workflows/
+├── .vscode/│  
+│   ├── launch.json
+│   └── tasks.json
 ├── configs/
+│   ├── configs.json
+│   ├── README.md
 │   ├── kotlin/
+│   │   ├── AGENTS.md
 │   │   ├── global-instructions.md
 │   │   ├── MEMORY.md
 │   │   ├── README.md
-│   │   └── AGENTS.md
+
 │   ├── python/
 │   │   ├── global-instructions.md
 │   │   ├── MEMORY.md
@@ -30,17 +36,47 @@ my-copilot-workflows/
 │   │   ├── global-instructions.md
 │   │   ├── MEMORY.md
 │   │   └── README.md
-│   ├── configs.json
-│   └── README.md
 ├── agents/
-├── skills/
-├── .vscode/
+│   ├── crap-analyzer.agent.md
+│   ├── git-orchestrator.agent.md
+│   ├── property-test-generator.agent.md
+│   ├── swarm-coordinator.agent.md
+│   └── tdd-coordinator.agent.md
 ├── instructions/
-├── vscode-swarm-setup.md
-├── install.ps1
+│   └── global-instructions.md
+├── scripts/
+│   ├── install.ps1
+│   └── sync-vscode-docs.ps1
+├── skills/
+│   ├── acceptance-test-writer/
+│   ├── architectural-reviewer/
+│   ├── caveman/
+│   ├── code-review-tdd/
+│   ├── concept-generator/
+│   ├── coverage-check/
+│   ├── crap-analyzer/
+│   ├── documentation-updater/
+│   ├── git-orchestrator/
+│   ├── grill-me/
+│   ├── grill-with-docs/
+│   ├── handoff/
+│   ├── mutation-testing/
+│   ├── property-test-generator/
+│   ├── review/
+│   ├── tdd-coordinator/
+│   ├── tdd-green/
+│   ├── tdd-red/
+│   ├── tdd-refactor/
+│   └── zoom-out/
+├── wezterm/
+│   ├── .wezterm.lua
+│   ├── README.md
+│   └── wezterm-start.ps1
 ├── MEMORY.md
 ├── AGENTS.md
+├── CONTRIBUTING.md
 ├── README.md
+├── vscode-swarm-setup.md
 └── Agentic-Coding-Workflow-v0.6.md
 ```
 

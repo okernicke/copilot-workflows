@@ -13,6 +13,6 @@ For config package requirements and manifest conventions, see `../README.md` and
 
 ## How to use
 
-Install the Python config via `install.ps1 --config python`.
+Install the Python config via `scripts/install.ps1 --config python`.
 
 After installation, use the standard VS Code swarm tasks or run the selected Copilot agents directly.

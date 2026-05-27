@@ -62,5 +62,5 @@ This repository supports multiple config packages under `configs/`, such as `con
 ## Installation
 
 ```powershell
-.\install.ps1
+.\scripts\install.ps1
 ```

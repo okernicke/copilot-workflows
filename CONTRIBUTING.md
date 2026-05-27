@@ -71,5 +71,5 @@ If you add a new workflow step or shared skill, update:
 
 ## Notes
 
-- The installer `install.ps1` currently resolves configs from `configs/configs.json`.
+- The canonical installer `scripts/install.ps1` resolves configs from `configs/configs.json`.
 - The shared root-level files are intended to stay generic and technology-agnostic.
