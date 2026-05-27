@@ -27,15 +27,15 @@ Provide a fully agent-orchestrated development workflow with strong quality cont
 
 1. Choose your terminal mode.
 2. VS Code mode: open your project in VS Code, press `Ctrl + Shift + P` → **Tasks: Run Task**, then choose a `Swarm: ...` task.
-3. WezTerm mode: run `./wezterm/wezterm-start.ps1 -WorkingDirectory "<project-path>"`.
+3. WezTerm mode: run `./.wezterm/wezterm-start.ps1 -WorkingDirectory "<project-path>"`.
 4. Use the installer:
 
 ```powershell
 .\scripts\install.ps1
 ```
 
-See [`vscode-swarm-setup.md`](vscode-swarm-setup.md) for terminal layout and setup tips.
-See [`wezterm/README.md`](wezterm/README.md) for WezTerm setup and startup flow.
+See [`.vscode/README.md`](.vscode/README.md) for terminal layout and setup tips.
+See [`.wezterm/README.md`](.wezterm/README.md) for WezTerm setup and startup flow.
 
 ## Config package guide
 
@@ -124,7 +124,7 @@ For the complete, current list and descriptions (including utility skills like `
 |------|---------|
 | [`AGENTS.md`](AGENTS.md) | Overview of agents and skills |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | Guidelines for config packages and contributions |
-| [`vscode-swarm-setup.md`](vscode-swarm-setup.md) | VS Code swarm layout and terminal guide |
+| [`.vscode/README.md`](.vscode/README.md) | VS Code swarm layout and terminal guide |
 | [`.vscode/tasks.json`](.vscode/tasks.json) | Quick start tasks for all agents |
 | `skills/` | Shared workflow skill prompts |
 | `configs/` | Language-specific config packages and metadata |

@@ -51,13 +51,13 @@ WezTerm reads config from:
 From this repository root, run:
 
 ```powershell
-Copy-Item .\wezterm\.wezterm.lua "$env:USERPROFILE\.wezterm.lua" -Force
+Copy-Item .\.wezterm\.wezterm.lua "$env:USERPROFILE\.wezterm.lua" -Force
 ```
 
 Alternative (symlink, good if you update the repo config often):
 
 ```powershell
-New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.wezterm.lua" -Target (Resolve-Path .\wezterm\.wezterm.lua) -Force
+New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.wezterm.lua" -Target (Resolve-Path .\.wezterm\.wezterm.lua) -Force
 ```
 
 Note: Creating symbolic links may require Developer Mode or elevated permissions.
@@ -73,7 +73,7 @@ wezterm
 For project-aware startup (recommended), run the helper script from this repository:
 
 ```powershell
-.\wezterm\wezterm-start.ps1 -WorkingDirectory "C:\path\to\your\project"
+.\.wezterm\wezterm-start.ps1 -WorkingDirectory "C:\path\to\your\project"
 ```
 
 This does two things before launching WezTerm:
