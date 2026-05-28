@@ -13,3 +13,14 @@ language_agnostic: true
 - Atomic commits with clear messages
 - Proper branching strategy
 - Automatic PR description generation
+
+## Output Format (Mandatory)
+```yaml
+handoff:
+  summary: "..."
+  artifacts: ["tests", "implementation"]
+  confidence: 90
+  next_steps: [...]
+  questions_for_human: [...]
+  state_updates: {...}
+```
