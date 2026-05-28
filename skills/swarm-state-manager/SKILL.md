@@ -1,32 +1,33 @@
 ---
 name: swarm-state-manager
-description: Central state management and observability for swarms - tracks actions, decisions, confidence, and artifacts
-version: 1.0
+description: Central state management and observability using event sourcing (append-only event log + materialized state.json)
+version: 1.1
 language_agnostic: true
 ---
 
 # Swarm State Manager Skill v1.0
 
-**Role**: You are the central state and observability manager for all agent swarms. You maintain a single source of truth for what happened during a swarm execution.
+**Role**: You are the single source of truth for swarm execution state and observability. You manage all swarm history, current status, and decision tracking using event sourcing.
 
 **Core Principles**:
-- Use append-only event log as source of truth
-- Maintain a fast materialized `state.json` for quick access
-- Support crash recovery and swarm restartability
-- Provide excellent observability for humans and agents
-- Ensure thread-safety and atomicity where possible
+- Event log is the immutable source of truth
+- Maintain a fast, always-consistent materialized `state.json`
+- Enable full swarm restartability and crash recovery
+- Provide excellent observability for agents and humans
+- Support safe concurrent access from multiple agents
+- Keep performance and simplicity in balance
 
-## File Structure
+## Directory Structure
 .swarm/
-├── state.json                 # Current materialized state (fast access)
+├── state.json                    # Current materialized state (fast access)
 ├── logs/
-│   └── events-{timestamp}.jsonl   # Append-only event log (immutable history)
-└── snapshots/
-    └── state-{timestamp}.json     # Periodic snapshots
+│   └── events-{swarm_id}-{timestamp}.jsonl   # Append-only event log
+├── snapshots/
+│   └── state-{timestamp}.json                # Periodic snapshots
+└── handoffs/                     # All handoff files
 
 ## Event Log Schema (JSON Lines)
 
-Every event in the `.jsonl` file follows this structure:
 ```json
 {
   "event_id": "evt_20250528134501234",
@@ -34,7 +35,7 @@ Every event in the `.jsonl` file follows this structure:
   "swarm_id": "swarm_abc123def456",
   "agent": "tdd-coordinator",
   "event_type": "phase_completed",
-  "task_id": "task_auth_service_789",
+  "task_id": "task_user_auth",
   "confidence": 88,
   "payload": { ... },
   "artifacts": [ ... ],
@@ -46,70 +47,44 @@ Every event in the `.jsonl` file follows this structure:
 
 ```json
 {
-  "swarm_id": "swarm_abc123def456",
-  "started_at": "2025-05-28T13:40:12Z",
-  "last_updated": "2025-05-28T13:52:45Z",
-  "status": "in_progress",
-  "overall_confidence": 82,
-
-  "current_task": {
-    "task_id": "task_user_auth",
-    "description": "...",
-    "assigned_agent": "tdd-coordinator"
-  },
-
-  "progress": {
-    "phases_completed": ["concept", "tdd_green"],
-    "phases_total": 7,
-    "completion_percentage": 68
-  },
-
+  "swarm_id": "...",
+  "started_at": "...",
+  "last_updated": "...",
+  "status": "in_progress | completed | failed | paused",
+  "overall_confidence": 84,
+  "current_task": { ... },
+  "progress": { ... },
   "agents": { ... },
   "artifacts": [ ... ],
   "quality": { ... },
   "git": { ... },
   "metadata": { ... },
-
-  "open_questions": [ ... ],
-  "next_recommended_steps": [ ... ]
+  "open_questions": [],
+  "next_recommended_steps": []
 }
 ```
 
-## Main Event Types
-- `swarm_started`, `swarm_completed`
-- `phase_started`, `phase_completed`
-- `handoff_created`
-- `quality_gate_passed`, `quality_gate_failed`
-- `architecture_violation`
-- `git_commit_created`
-- `error`, `human_question`
-
 ## Core Functions
-1. `initialize(swarm_id)` — Create new state + first event
-2. `append_event(event)` — Append to event log + update state.json
-3. `get_state()` — Return current materialized state
-4. `get_history(limit)` — Return recent events
-5. `generate_report()` — Create human-readable swarm summary
-6. `rebuild_state()` — Rebuild state.json from event log (recovery)
 
-## Output Format (when called)
-```yaml
-state_update:
-  success: true
-  events_appended: 1
-  current_confidence: 85
-  next_recommended_agent: "quality-guardian"
-  summary: "Updated swarm state with TDD green phase"
-```
+1. `initialize(swarm_id, initial_context)` — Start new swarm
+2. `append_event(event)` — Append to log + update state.json
+3. `get_state()` — Return current state
+4. `get_event_history(limit = 50)` — Get recent events
+5. `generate_report(type = "full")` — Create human readable report
+6. `rebuild_state()` — Reconstruct state from event log (recovery)
+7. `add_question(question)` — Track open questions
+
 
 ## Integration Notes
-- swarm-coordinator should initialize and heavily use this skill
-- All major agents must call this skill to log their actions
-- Enables future features: retry logic, swarm resume, performance analytics
-- Strongly recommended to use this skill before creating any handoff
+- `swarm-coordinator` **must** use this skill at start and end of every swarm
+- Every major agent should call `append_event()` after completing important work
+- Always update state **before** creating a handoff
+- This skill is the backbone of observability and debugging
 
-## Usage Pattern:
-Every major agent should:
-- Do its work
-- Call swarm-state-manager to append events
-- Then create its handoff
+**Recommended Usage Pattern**:
+1. Agent starts work → `get_state()`
+2. Agent finishes major step → `append_event(...)`
+3. Agent creates handoff → `handoff-creator`
+4. Return control to `swarm-coordinator`
+
+This skill enables future features like swarm resume, retry logic, and performance analytics.
