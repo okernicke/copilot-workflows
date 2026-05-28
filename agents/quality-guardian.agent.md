@@ -54,5 +54,5 @@ handoff:
 ## Integration Notes
 - Usually runs after tdd-coordinator and architectural-reviewer
 - Acts as a mandatory gate before git-orchestrator
-Updates central .swarm/state.json with quality metrics
+- Updates central .swarm/state.json with quality metrics
 - Should block merge/PR if critical issues are found
